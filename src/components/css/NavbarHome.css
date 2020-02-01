@@ -1,0 +1,59 @@
+.navbar-home {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 25%;
+  width: 75%;
+  margin: auto;
+}
+
+.register-login {
+  width: 50%;
+  display: flex;
+  list-style: none;
+  padding: 10px 20px;
+  margin-left: auto;
+}
+
+.register-login li {
+  padding: 0 20px;
+}
+
+.links {
+  text-decoration: none;
+  color: #1b1b1b;
+  transition: 0.5s;
+}
+
+.links:hover {
+  color: red;
+}
+
+.logo {
+  width: 50%;
+}
+
+.logo img {
+  width: 40%;
+  padding: 10px 20px;
+}
+
+@media (max-width: 800px) {
+  .logo img {
+    width: 50%;
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar-home {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  .logo img {
+    width: 100%;
+  }
+}

@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+
 import { RegisterForm } from "./RegisterForm";
 import AuthApi from "./authRepository";
 
@@ -40,7 +41,12 @@ class RegisterPage extends Component {
     return (
       <Fragment>
         <div className="contenedor-principal">
-          <div className="contenedor">
+          <div className="container">
+            <img
+              className="logo-linkedin"
+              src="/assets/img/logo-linkedin-clon.png"
+              alt="logo"
+            />
             <h1 className="title">Regístrate</h1>
             <RegisterForm
               user={this.state.user}

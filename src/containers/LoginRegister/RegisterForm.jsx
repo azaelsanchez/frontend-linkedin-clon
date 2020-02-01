@@ -35,7 +35,10 @@ export const RegisterForm = ({
       value={repeatPassword}
       onChange={onChange}
     />
-    <input type="submit" value="Registrar" />
+    <div className="btn-register-company-user">
+      <input type="submit" value="Register" id="btn-register" />
+      <input type="submit" value="I'm user" id="btn-register-company" />
+    </div>
   </form>
 );
 

@@ -1,0 +1,21 @@
+.panel-lateral {
+  border: 2px solid #1b1b1b;
+  width: 15%;
+  margin-left: 10%;
+  height: 80vh;
+  position: absolute;
+  top: 15%;
+  border-radius: 120px;
+  left: 0;
+  z-index: -1;
+}
+.panel-lateral img {
+  width: 90%;
+  border-radius: 120px 120px 0px 0px;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+.panel-lateral h3{
+    padding: 10px;
+}

@@ -21,7 +21,7 @@ const authRepository = () => {
       instance
         .post("login/", user)
         .then(res => {
-          console.log(user);
+          console.log(res);
           localStorage.setItem(tokenName, JSON.stringify(res.data.token));
           localStorage.setItem(userStore, JSON.stringify(res.data.user));
           resol(res.data);

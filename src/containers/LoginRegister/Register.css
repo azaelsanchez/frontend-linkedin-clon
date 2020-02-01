@@ -1,0 +1,48 @@
+.contenedor-principal {
+  background: url("../../components/assets/img/register-login-panel.png")
+    no-repeat;
+  background-position: right center;
+  background-size: contain;
+  background-color: #2d8cec;
+  height: 100vh;
+}
+
+.container {
+  height: 97vh;
+  /* overflow: hidden; */
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+  width: 40%;
+  display: flexbox;
+  position: relative;
+  /* top: 15%; */
+  padding: 10px;
+  margin: auto;
+}
+
+.logo-linkedin {
+  width: 50% !important;
+  margin-left: 25% !important;
+}
+
+.btn-register-company-user {
+  display: flex;
+  justify-content: space-between;
+}
+
+#btn-register {
+  background: green;
+  color: white;
+  transition: 0.5s;
+}
+
+#btn-register-company {
+  color: white;
+  background: #edb21c;
+  transition: 0.5s;
+}
+
+#btn-register:hover,
+#btn-register-company:hover {
+  background: #1b1b1b;
+}
