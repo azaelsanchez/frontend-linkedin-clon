@@ -3,11 +3,20 @@ import React from "react";
 export const RegisterForm = ({
   onChange,
   onSubmit,
-  user: { name, email, password, repeatPassword }
+  user: { name, surname, email, password, repeatPassword }
 }) => (
   <form className="form" onSubmit={onSubmit}>
     <label htmlFor="name">Name</label>
     <input type="text" id="name" name="name" value={name} onChange={onChange} />
+
+    <label htmlFor="surname">Surname</label>
+    <input
+      type="text"
+      id="surname"
+      name="surname"
+      value={surname}
+      onChange={onChange}
+    />
 
     <label htmlFor="email">Email</label>
     <input
@@ -35,9 +44,10 @@ export const RegisterForm = ({
       value={repeatPassword}
       onChange={onChange}
     />
+
     <div className="btn-register-company-user">
       <input type="submit" value="Register" id="btn-register" />
-      <input type="submit" value="I'm user" id="btn-register-company" />
+      <input type="submit" value="I'm Company" id="btn-register-company" />
     </div>
   </form>
 );

@@ -7,9 +7,11 @@
   height: 100vh;
 }
 
-.logo-linkedin {
-  width: 90%;
-  margin-left: 5%;
+.title-login {
+  text-align: center;
+  font-size: 30px;
+  color: white;
+  border-bottom: 2px solid white;
   margin-top: 10%;
 }
 
@@ -19,7 +21,6 @@
   overflow: hidden;
   border-left: 2px solid white;
   border-right: 2px solid white;
-
   width: 40%;
   display: flexbox;
   position: relative;

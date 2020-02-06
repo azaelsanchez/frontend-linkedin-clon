@@ -11,6 +11,7 @@ class RegisterPage extends Component {
     this.state = {
       user: {
         name: "",
+        surname: "",
         email: "",
         password: "",
         repeatPassword: ""
@@ -41,12 +42,12 @@ class RegisterPage extends Component {
     return (
       <Fragment>
         <div className="contenedor-principal">
+          <img
+            className="logo-linkedin"
+            src="/assets/img/logo-linkedin-clon.png"
+            alt="logo"
+          />
           <div className="container">
-            <img
-              className="logo-linkedin"
-              src="/assets/img/logo-linkedin-clon.png"
-              alt="logo"
-            />
             <h1 className="title">Regístrate</h1>
             <RegisterForm
               user={this.state.user}

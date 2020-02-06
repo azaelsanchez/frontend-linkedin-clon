@@ -1,15 +1,13 @@
 import axios from "axios";
 
-
 const authRepository = () => {
-  //let debug = true;
-
-  let urlBack = "http://localhost:8000/api/user";
+  let urlBack = "http://localhost:8000/user/";
 
   const tokenName = "token";
-  const userStore = "users";
+  const userStore = "user";
 
   const login = user => {
+    console.log(user);
     return new Promise((resol, rej) => {
       const instance = axios.create({
         baseURL: urlBack,
@@ -22,10 +20,12 @@ const authRepository = () => {
         .post("login/", user)
         .then(res => {
           console.log(res);
-          localStorage.setItem(tokenName, JSON.stringify(res.data.token));
+          localStorage.setItem(
+            tokenName,
+            JSON.stringify(res.data.remember_token)
+          );
           localStorage.setItem(userStore, JSON.stringify(res.data.user));
-          resol(res.data);
-          console.log(res.data.user);
+          resol(res.config);
         })
         .catch(error => {
           console.log(error);
@@ -63,7 +63,7 @@ const authRepository = () => {
       const instance = axios.create({
         baseURL: urlBack,
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         }
       });
       instance

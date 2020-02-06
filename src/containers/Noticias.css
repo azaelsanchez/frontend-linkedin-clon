@@ -19,3 +19,15 @@
 .form-group input {
   padding: 10px;
 }
+
+.items-anuncio {
+  /* box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.75); */
+  border: 2px solid #1b1b1b;
+  margin: 20px;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.items-anuncio h1 {
+  color: red;
+}

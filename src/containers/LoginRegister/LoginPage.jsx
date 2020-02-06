@@ -13,7 +13,8 @@ class LoginPage extends Component {
       user: {
         email: "",
         password: ""
-      }
+      },
+      redirect: false
     };
   }
 
@@ -41,18 +42,16 @@ class LoginPage extends Component {
   };
 
   render() {
-    const userValid = localStorage.getItem("users");
-    if (userValid && this.state.redirect === true) {
-      console.log(userValid.email);
-      const user = JSON.parse(localStorage.getItem("users"));
+    const userStore = this.state.user;
 
-      console.log(user.username);
+    if (userStore && this.state.redirect) {
+      console.log(userStore.email);
       return (
         <Fragment>
           <div className="redirect-profile">
-            <h1> Bienvenido {user.email} </h1>
+            <h1> Bienvenido {userStore.email} </h1>
 
-            <Link className="link" to={`/user/${user.email}`}>
+            <Link className="link" to={`/user/${userStore.email}`}>
               Ya puedes visitar tu perfil
             </Link>
           </div>
@@ -62,12 +61,12 @@ class LoginPage extends Component {
       return (
         <Fragment>
           <div className="contenedor">
+            <img
+              className="logo-linkedin"
+              src="/assets/img/logo-linkedin-clon.png"
+              alt="logo"
+            />
             <div className="bloque-login">
-              <img
-                className="logo-linkedin"
-                src="/assets/img/logo-linkedin-clon.png"
-                alt="logo"
-              />
               <h1 className="title">Iniciar sesión</h1>
               <LoginForm
                 user={this.state.user}
