@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 //import axios from "axios";
 
 import PanelUser from "../components/Panel-user";
+import Navbar from "../components/Navbar";
 
 import { showOfferWorks } from "../redux/actions/dataActions";
 import "./Noticias.css";
@@ -22,6 +23,7 @@ class Noticias extends Component {
   render() {
     return (
       <div className="noticias-post">
+      <Navbar/>
         <form className="form-group">
           <input
             type="text"

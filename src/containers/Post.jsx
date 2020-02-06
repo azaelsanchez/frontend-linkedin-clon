@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 //import axios from "axios";
 
 import PanelUser from "../components/Panel-user";
+import Navbar from "../components/Navbar";
+
 
 import { crearPost } from "../redux/actions/dataActions";
 import "./Noticias.css";
@@ -22,6 +24,7 @@ class Post extends Component {
   render() {
     return (
       <div className="noticias-post">
+      <Navbar/>
         <form className="form-group">
           <input
             type="text"
@@ -37,14 +40,15 @@ class Post extends Component {
         <div className="container-noticias">
           <PanelUser />
           <div className="container-anuncios">
-            {this.props.post?.map(item => {
-              return (
-                <div key={item.id} className="items-anuncio">
-                  <h1>@ {item.user_id}</h1>
+            {this.props.post?.map(item => 
+                <div  className="items-anuncio">
+                  <h1>@ {item.name}</h1>
+                  <img src={item.image_path}></img>
                   <h4>Descripción: {item.description} </h4>
+                  <button>Comentar</button>
                 </div>
-              );
-            })}
+             
+            )}
           </div>
         </div>
       </div>

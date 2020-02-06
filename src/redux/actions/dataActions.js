@@ -4,6 +4,7 @@ import store from "../store";
 // types
 import SHOW_OFFER_WORKS from "../types";
 import CREAR_POST from "../types";
+import USER_MODIFY from "../types";
 
 
 
@@ -28,9 +29,19 @@ export function showOfferWorks() {
 
 
 
+
 export function crearPost() {
   axios.get("http://localhost:8000/api/post").then(res => {
     console.log(res);
     store.dispatch({ type: CREAR_POST, payload: res.data });
   });
 }
+
+export function modifyUser(paramsBody, paramsHeaders) {
+  axios.post('http://localhost:8000/user/modificarperfil', paramsBody, paramsHeaders)
+     .then(res=>{
+         store.dispatch({type: USER_MODIFY, payload:[]});
+         return res.data.message
+     })
+     .catch(err=>console.log(err))
+    }

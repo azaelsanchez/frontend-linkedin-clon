@@ -5,6 +5,7 @@ import thunk from "redux-thunk";
 
 import dataReducer from "./reducers/dataReducers";
 import postReducer from "./reducers/postReducer";
+import modificarUser from "./reducers/postReducer";
 import uiReducer from "./reducers/uiReducer";
 
 const initialState = {};
@@ -14,6 +15,7 @@ const reducers = combineReducers({
 
   data: dataReducer,
   post: postReducer,
+  mUser: modificarUser,
   UI: uiReducer
 });
 
