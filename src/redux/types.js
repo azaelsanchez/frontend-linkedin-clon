@@ -11,7 +11,8 @@ export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 // DATA reducers types
 const SHOW_OFFER_WORKS = "SHOW_OFFER_WORKS";
+const CREAR_POST = "CREAR_POST"
 
 export default {
-  SHOW_OFFER_WORKS
+  SHOW_OFFER_WORKS,CREAR_POST,
 };

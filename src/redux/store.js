@@ -4,6 +4,7 @@ import thunk from "redux-thunk";
 //  Reducers
 
 import dataReducer from "./reducers/dataReducers";
+import postReducer from "./reducers/postReducer";
 import uiReducer from "./reducers/uiReducer";
 
 const initialState = {};
@@ -12,6 +13,7 @@ const reducers = combineReducers({
   // Aquí cargamos todos los reducers
 
   data: dataReducer,
+  post: postReducer,
   UI: uiReducer
 });
 
