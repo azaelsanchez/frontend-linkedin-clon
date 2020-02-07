@@ -1,4 +1,4 @@
-import USER_MODIFY from "../types";
+import {USER_MODIFY} from "../types";
 
 const initialState = {
     mUser:[]

@@ -7,6 +7,7 @@ import dataReducer from "./reducers/dataReducers";
 import postReducer from "./reducers/postReducer";
 import modificarUser from "./reducers/postReducer";
 import uiReducer from "./reducers/uiReducer";
+import perfilUser from "./reducers/perfilUser";
 
 const initialState = {};
 const middleware = { thunk };
@@ -16,7 +17,8 @@ const reducers = combineReducers({
   data: dataReducer,
   post: postReducer,
   mUser: modificarUser,
-  UI: uiReducer
+  UI: uiReducer,
+  pUser: perfilUser
 });
 
 const store = createStore(

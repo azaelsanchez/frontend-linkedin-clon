@@ -5,6 +5,7 @@ import store from "../store";
 import SHOW_OFFER_WORKS from "../types";
 import CREAR_POST from "../types";
 import USER_MODIFY from "../types";
+import VER_PERFIL_USER from "../types";
 
 
 
@@ -18,11 +19,6 @@ export function showOfferWorks() {
 // export function showCities(){
 //     axios.get('http://localhost:8000/api/ciudades').then().catch()
 // }
-
-
-
-
-
 
 
 
@@ -45,3 +41,11 @@ export function modifyUser(paramsBody, paramsHeaders) {
      })
      .catch(err=>console.log(err))
     }
+
+    export function perfilUser() {
+      axios.get("http://localhost:8000/api/post").then(res => {
+        console.log(res);
+        store.dispatch({ type: VER_PERFIL_USER, payload: res.data });
+      });
+    }
+    
