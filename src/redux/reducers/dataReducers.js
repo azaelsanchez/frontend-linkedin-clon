@@ -1,8 +1,7 @@
-import { SHOW_OFFER_WORKS } from "../types";
+import {SHOW_OFFER_WORKS} from "../types";
 
 const initialState = {
   offer: [],
-  profile: []
 };
 
 function offerWorksReducer(state = initialState, action) {

@@ -1,4 +1,4 @@
-import CREAR_POST from "../types";
+import {CREAR_POST} from "../types";
 
 const initialState = {
     post:[]
