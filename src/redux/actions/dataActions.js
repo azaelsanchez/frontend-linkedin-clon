@@ -2,9 +2,9 @@ import axios from "axios";
 import store from "../store";
 
 // types
-import SHOW_OFFER_WORKS from "../types";
-import SHOW_CITIES from "../types";
-import SHOW_USER_PANEL from "../types";
+import { SHOW_OFFER_WORKS } from "../types";
+import { SHOW_CITIES } from "../types";
+import { SHOW_USER_PANEL } from "../types";
 
 export function showOfferWorks() {
   axios
@@ -27,5 +27,4 @@ export function showCities() {
 export function showUserPanel() {
   const userStore = JSON.parse(localStorage.getItem("user"));
   store.dispatch({ type: SHOW_USER_PANEL, payload: userStore });
-  
 }

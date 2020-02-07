@@ -1,4 +1,4 @@
-import SHOW_CITIES from "../types";
+import { SHOW_CITIES } from "../types";
 
 const initialState = {
   cities: []

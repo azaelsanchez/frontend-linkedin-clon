@@ -11,16 +11,19 @@ class PanelUser extends Component {
   }
 
   render() {
-    const user = JSON.parse(localStorage.getItem("user"));
-
+    //const user = JSON.parse(localStorage.getItem("user"));
+    const user = this.props.profile;
+    console.log(this.props.profile);
+    console.log(user[0]);
     return (
-      <div className="panel-lateral">
-        <img src={user[0].image} alt="avatar" />
-        <h3>Bienvenido {user[0].name}</h3>
+      <div {...this.props.profile.id} className="panel-lateral">
+        {/* <img src={user.image} alt="avatar" /> */}
+        {this.props.profile.id}
+        <h3>Bienvenido {user[0]?.name}</h3>
         <p>Perfil:</p>
-        <p>{user[0].email} </p>
+        <p>{user[0]?.email} </p>
         <p>
-          {user[0].name} {user[0].surname}
+          {user[0]?.name} {user[0]?.surname}
         </p>
       </div>
     );
