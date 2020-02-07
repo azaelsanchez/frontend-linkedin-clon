@@ -39,8 +39,7 @@ class Noticias extends Component {
         <div className="container-noticias">
           <PanelUser />
           <div className="container-anuncios">
-            {this.props.offer?.map(item => {
-              return (
+            {this.props.offer?.map(item => 
                 <div key={item.id} className="items-anuncio">
                   <h1>{item.title_offer}</h1>
                   <p>{item.company_name} </p>
@@ -50,8 +49,8 @@ class Noticias extends Component {
                   <p>Sector: {item.sector} </p>
                   <p>Habilidades requeridas: {item.required_skills} </p>
                 </div>
-              );
-            })}
+              )
+            }
           </div>
         </div>
       </div>

@@ -9,6 +9,7 @@ import RegisterPage from "./containers/LoginRegister/RegisterPage.jsx";
 import Noticias from "./containers/Noticias.jsx";
 import Post from "./containers/Post.jsx";
 import ModificarPerfilUser from "./containers/ModificarPerfilUser";
+import PerfilUser from "./containers/PerfilUser";
 
 const Router = () => {
   return (
@@ -20,6 +21,7 @@ const Router = () => {
         <Route exact path="/anuncios" component={Noticias} />
         <Route exact path="/post" component={Post} />
         <Route exact path="/modificaruser" component={ModificarPerfilUser} />
+        <Route exact path="/PerfilUser" component={PerfilUser} />
       </Switch>
     </BrowserRouter>
   );

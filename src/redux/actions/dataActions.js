@@ -2,9 +2,10 @@ import axios from "axios";
 import store from "../store";
 
 // types
-import SHOW_OFFER_WORKS from "../types";
-import CREAR_POST from "../types";
-import USER_MODIFY from "../types";
+import {SHOW_OFFER_WORKS} from "../types";
+import {CREAR_POST} from "../types";
+import {USER_MODIFY} from "../types";
+import {VER_PERFIL_USER} from "../types";
 
 
 
@@ -45,3 +46,12 @@ export function modifyUser(paramsBody, paramsHeaders) {
      })
      .catch(err=>console.log(err))
     }
+
+    export function perfilUser() {
+      axios.get("http://localhost:8000/user/verperfil/${id}").then(res => {
+        console.log(res);
+        store.dispatch({ type: VER_PERFIL_USER, payload: res.data });
+      });
+    }
+    
+  
