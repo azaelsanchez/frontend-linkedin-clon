@@ -10,12 +10,7 @@ import { showOfferWorks } from "../redux/actions/dataActions";
 import "./Noticias.css";
 
 class Noticias extends Component {
-  constructor(props) {
-    super(props);
-    // this.state = {
-    //   anuncios: []
-    // };
-  }
+  
   componentDidMount() {
     showOfferWorks();
   }

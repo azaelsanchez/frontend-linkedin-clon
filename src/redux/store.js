@@ -3,19 +3,18 @@ import thunk from "redux-thunk";
 
 //  Reducers
 
-import dataReducer from "./reducers/dataReducers";
-import postReducer from "./reducers/postReducer";
-import modificarUser from "./reducers/postReducer";
+import offerWorksReducer from "./reducers/dataReducers";
+import cityReducer from "./reducers/cityReducers";
+import userProfileReducer from "./reducers/userProfileReducers";
 import uiReducer from "./reducers/uiReducer";
 
 const initialState = {};
 const middleware = { thunk };
 const reducers = combineReducers({
   // Aquí cargamos todos los reducers
-
-  data: dataReducer,
-  post: postReducer,
-  mUser: modificarUser,
+  user: userProfileReducer,
+  city: cityReducer,
+  data: offerWorksReducer,
   UI: uiReducer
 });
 

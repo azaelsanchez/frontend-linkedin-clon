@@ -7,8 +7,7 @@ import App from "./containers/App";
 import LoginPage from "./containers/LoginRegister/LoginPage.jsx";
 import RegisterPage from "./containers/LoginRegister/RegisterPage.jsx";
 import Noticias from "./containers/Noticias.jsx";
-import Post from "./containers/Post.jsx";
-import ModificarPerfilUser from "./containers/ModificarPerfilUser";
+import Cities from "./components/cities";
 
 const Router = () => {
   return (
@@ -18,8 +17,7 @@ const Router = () => {
         <Route exact path="/user/register" component={RegisterPage} />
         <Route exact path="/user/login" component={LoginPage} />
         <Route exact path="/anuncios" component={Noticias} />
-        <Route exact path="/post" component={Post} />
-        <Route exact path="/modificaruser" component={ModificarPerfilUser} />
+        <Route exact path="/ciudades" component={Cities} />
       </Switch>
     </BrowserRouter>
   );
