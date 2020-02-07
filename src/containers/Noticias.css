@@ -35,7 +35,7 @@
 .modal-text {
   width: 95%;
   min-height: 100px;
-  border: 2px solid #1b1b1b;
+  border: none;
   border-radius: 5px;
   padding: 10px;
   font-family: Arial, Helvetica, sans-serif;

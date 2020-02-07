@@ -11,12 +11,13 @@ import { crearPost } from "../redux/actions/dataActions";
 import "./Noticias.css";
 
 class Post extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       modal: false
     };
   }
+
   componentDidMount() {
     crearPost();
   }
@@ -31,20 +32,6 @@ class Post extends Component {
 
   render() {
     return (
-      // <div className="noticias-post">
-      //   <Navbar />
-      //   <form className="form-group">
-      //     <input
-      //       type="text"
-      //       placeholder="Buscar gente"
-      //       className="input-gente"
-      //     />
-      //     <input
-      //       type="text"
-      //       placeholder="Buscar empleo"
-      //       className="input-empleo"
-      //     />
-      //   </form>
       <Fragment>
         <Navbar />
         <div className="container-noticias">

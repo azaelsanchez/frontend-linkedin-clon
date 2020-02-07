@@ -5,17 +5,19 @@
   margin: 100px auto 0;
   transition: all 0.8s;
   position: absolute;
-  top: 30%;
-  left: 25%;
-  width: 60%;
+  top: 20%;
+  left: 30%;
+  width: 40%;
+  border-radius: 10px;
 }
 
 .modal-header {
-  background: #263238;
+  background: #880f0f;
   height: 40px;
   line-height: 40px;
   padding: 5px 20px;
   text-align: right;
+  border-radius: 10px 10px 0 0;
 }
 
 .modal-header h3 {
@@ -31,9 +33,10 @@
 }
 
 .modal-footer {
-  background: #263238;
+  background: white;
   height: 35px;
   padding: 15px;
+  border-radius: 0 0 10px 10px;
 }
 
 .close-modal-btn {
