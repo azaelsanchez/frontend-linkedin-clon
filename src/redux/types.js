@@ -16,4 +16,4 @@ export const SHOW_OFFER_WORKS = "SHOW_OFFER_WORKS";
 export const CREAR_POST = "CREAR_POST";
 export const USER_MODIFY = "USER_MODIFY";
 export const VER_PERFIL_USER = "VER_PERFIL_USER";
-
+export const CREAR_POST_USER = "CREAR_POST_USER";

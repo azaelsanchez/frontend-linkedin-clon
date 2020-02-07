@@ -2,7 +2,6 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 
 //  Reducers
-
 import offerWorksReducer from "./reducers/dataReducers";
 import cityReducer from "./reducers/cityReducers";
 import userProfileReducer from "./reducers/userProfileReducers";
@@ -10,6 +9,7 @@ import postReducer from "./reducers/postReducer";
 import modificarUser from "./reducers/modificarUser";
 import uiReducer from "./reducers/uiReducer";
 import perfilUser from "./reducers/perfilUser";
+import crearPostReducers from "./reducers/crearPostReducers";
 
 const initialState = {};
 const middleware = { thunk };
@@ -20,6 +20,7 @@ const reducers = combineReducers({
   city: cityReducer,
   data: offerWorksReducer,
   post: postReducer,
+  datapost: crearPostReducers,
   mUser: modificarUser,
   pUser: perfilUser,
   UI: uiReducer

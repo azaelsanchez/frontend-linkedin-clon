@@ -3,59 +3,54 @@ import { connect } from "react-redux";
 
 import Navbar from "../components/Navbar";
 import "./Noticias.css";
-import { perfilUser } from "../redux/actions/dataActions";
+import { showUserPanel } from "../redux/actions/dataActions";
 
+class PerfilUser extends Component {
+  componentDidMount() {
+    showUserPanel();
+  }
 
-class PerfilUser extends Component{
-    constructor(props) {
-        super(props);
-        // this.state = {
-        //   anuncios: []
-        // };
-      }
-      componentDidMount() {
-        perfilUser();
-      }
-    
-      render() {
-        return (
-          <div className="noticias-post">
-          <Navbar/>
-            <form className="form-group">
-              <input
-                type="text"
-                placeholder="Buscar gente"
-                className="input-gente"
-              />
-              <input
-                type="text"
-                placeholder="Buscar empleo"
-                className="input-empleo"
-              />
-            </form>
-            <div className="container-noticias">
-              <div className="container-anuncios">
-                {this.props.puser?.map(item => 
-                    <div key={item.id} className="items-anuncio">
-                      <h1>{item.name}</h1>
-                      <h1>{item.surname}</h1>
-                      <p>Email: {item.email} </p>
-                      <p>Direccion: {item.address} </p>
-                      <p>Telefono: {item.phone} </p>
-                    </div>
-                  )
-                }
-              </div>
+  render() {
+    const user = this.props.profile;
+    console.log(this.props.profile);
+    return (
+      <div className="noticias-post">
+        <Navbar />
+        <form className="form-group">
+          <input
+            type="text"
+            placeholder="Buscar gente"
+            className="input-gente"
+          />
+          <input
+            type="text"
+            placeholder="Buscar empleo"
+            className="input-empleo"
+          />
+        </form>
+        <div className="container-noticias">
+          <div {...this.props.profile.id} className="container-anuncios">
+            {this.props.profile.id}
+            <div className="perfil-container">
+              <h1>
+                {user[0]?.name} {user[0]?.surname}
+              </h1>
+
+              <p>Email: {user[0]?.email} </p>
+              <p>Direccion: {user[0]?.address} </p>
+              <p>Telefono: {user[0]?.phone} </p>
             </div>
           </div>
-        );
-      }
-    }
-    
-    function mapStateToProps(state) {
-      return {
-        puser: state.puser.puser
-      };
-    }
-    
-    export default connect(mapStateToProps)(PerfilUser);
+        </div>
+      </div>
+    );
+  }
+}
+
+function mapStateToProps(state) {
+  return {
+    profile: state.user.profile
+  };
+}
+
+export default connect(mapStateToProps)(PerfilUser);

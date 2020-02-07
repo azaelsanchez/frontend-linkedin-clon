@@ -2,12 +2,15 @@ import axios from "axios";
 import store from "../store";
 
 // types
-import { SHOW_CITIES } from "../types";
-import { SHOW_USER_PANEL } from "../types";
-import { SHOW_OFFER_WORKS } from "../types";
-import { CREAR_POST } from "../types";
-import { USER_MODIFY } from "../types";
-import { VER_PERFIL_USER } from "../types";
+import {
+  SHOW_CITIES,
+  SHOW_USER_PANEL,
+  SHOW_OFFER_WORKS,
+  CREAR_POST,
+  USER_MODIFY,
+  VER_PERFIL_USER,
+  CREAR_POST_USER
+} from "../types";
 
 export function showOfferWorks() {
   axios
@@ -47,7 +50,7 @@ export function modifyUser(paramsBody, paramsHeaders) {
 }
 
 export function perfilUser() {
-  axios.get("http://localhost:8000/user/verperfil/${id}").then(res => {
+  axios.get("http://localhost:8000/user/verperfil/").then(res => {
     console.log(res);
     store.dispatch({ type: VER_PERFIL_USER, payload: res.data });
   });
@@ -58,4 +61,14 @@ export function crearPost() {
     console.log(res);
     store.dispatch({ type: CREAR_POST, payload: res.data });
   });
+}
+
+export function crearPostUser() {
+  axios
+    .post("http://localhost:8000/api/crearpost")
+    .then(res => {
+      console.log(res);
+      store.dispatch({ type: CREAR_POST_USER, payload: res.data });
+    })
+    .catch();
 }
