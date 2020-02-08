@@ -70,5 +70,5 @@ export function crearPostUser() {
       console.log(res);
       store.dispatch({ type: CREAR_POST_USER, payload: res.data });
     })
-    .catch();
+    .catch(error => console.log(error));
 }

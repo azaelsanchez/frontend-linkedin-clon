@@ -3,8 +3,7 @@ import React from "react";
 export const LoginForm = ({
   onChange,
   onSubmit,
-  user: { email, password }
-}) => (
+  user: { email, password }}) => (
   <form className="form" onSubmit={onSubmit}>
     <label htmlFor="email">Email</label>
     <input

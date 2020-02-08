@@ -1,25 +1,31 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 
-//import axios from "axios";
+// Redux;
+import { crearPost } from "../redux/actions/dataActions";
+import { crearPostUser } from "../redux/actions/dataActions";
 
 import PanelUser from "../components/Panel-user";
 import Navbar from "../components/Navbar";
 import Modal from "../components/Modal";
 
-import { crearPost } from "../redux/actions/dataActions";
 import "./Noticias.css";
 
 class Post extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
+      posting: {
+        image: "",
+        description: ""
+      }
     };
   }
 
   componentDidMount() {
     crearPost();
+    crearPostUser();
   }
 
   openModal = () => {
@@ -28,6 +34,18 @@ class Post extends Component {
 
   closeModal = () => {
     this.setState({ modal: false });
+  };
+
+  onChange = event => {
+    event.preventDefault();
+    let post = Object.assign({}, this.state.posting);
+    this.setState({ posting: post });
+    console.log(post);
+  };
+
+  onClick = event => {
+    event.preventDefault();
+    // console.log(event);
   };
 
   render() {
@@ -46,12 +64,28 @@ class Post extends Component {
               close={this.closeModal}
             >
               <form className="form-modal">
+                <input
+                  type="file"
+                  defaultValue={this.state.posting.image}
+                  name="image"
+                  onChange={this.onChange}
+                />
                 <textarea
                   name="modal-post"
                   placeholder="¿A quién has salvado ultimamente?"
+                  onChange={this.onChange}
+                  defaultValue={this.state.posting.description}
                   className="modal-text"
                 ></textarea>
               </form>
+              <div className="modal-footer">
+                <button className="btn-cancel" onClick={this.closeModal}>
+                  CLOSE
+                </button>
+                <button className="btn-continue" onClick={this.onClick}>
+                  CONTINUE
+                </button>
+              </div>
             </Modal>
           </div>
           <div className="container-anuncios">
@@ -73,7 +107,8 @@ class Post extends Component {
 function mapStateToProps(state) {
   console.log(state);
   return {
-    post: state.post.post
+    post: state.post.post,
+    posting: state.datapost.posting
   };
 }
 

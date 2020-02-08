@@ -6,13 +6,18 @@ import { showUserPanel } from "../redux/actions/dataActions";
 import "./css/Modal.css";
 
 class Modal extends Component {
+ 
   componentDidMount() {
     showUserPanel();
+    
   }
+
 
   render() {
     const user = this.props.profile;
-    console.log(user);
+    
+
+    // console.log(user);
     return (
       <div>
         <div
@@ -27,7 +32,8 @@ class Modal extends Component {
         >
           <div {...this.props.profile.id} className="modal-header">
             {this.props.profile.id}
-            <h3> {user[0]?.name} </h3>
+            <h3> @{user[0]?.email}</h3>
+
             <span className="close-modal-btn" onClick={this.props.close}>
               ×
             </span>
@@ -35,12 +41,14 @@ class Modal extends Component {
           <div className="modal-body">
             <p>{this.props.children}</p>
           </div>
-          <div className="modal-footer">
+          {/* <div className="modal-footer">
             <button className="btn-cancel" onClick={this.props.close}>
               CLOSE
             </button>
-            <button className="btn-continue">CONTINUE</button>
-          </div>
+            <button className="btn-continue" onClick={this.onClick}>
+              CONTINUE
+            </button>
+          </div> */}
         </div>
       </div>
     );
@@ -49,7 +57,8 @@ class Modal extends Component {
 
 function mapStateToProps(state) {
   return {
-    profile: state.user.profile
+    profile: state.user.profile,
+    posting: state.datapost.posting
   };
 }
 
