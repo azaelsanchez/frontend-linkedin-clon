@@ -10,6 +10,8 @@ export const LOADING_UI = "LOADING_UI";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 // DATA reducers types
+export const SHOW_CITIES = "SHOW_CITIES";
+export const SHOW_USER_PANEL = "SHOW_USER_PANEL";
 export const SHOW_OFFER_WORKS = "SHOW_OFFER_WORKS";
 export const CREAR_POST = "CREAR_POST";
 export const USER_MODIFY = "USER_MODIFY";

@@ -1,12 +1,12 @@
 import React, { Fragment } from "react";
 
-import NavbarHome from "../components/NavbarHome";
+import Navbar from "../components/NavbarHome";
 import "./App.css";
 
 const App = () => {
   return (
     <Fragment>
-      <NavbarHome />
+      <Navbar />
       <div className="App">
         <div className="container-flex1">
           <h1> Te damos la bienvenida a tu cominidad de héroes</h1>
