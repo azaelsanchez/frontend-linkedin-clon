@@ -2,12 +2,17 @@ import axios from "axios";
 import store from "../store";
 
 // types
-import { SHOW_CITIES } from "../types";
-import { SHOW_USER_PANEL } from "../types";
-import { SHOW_OFFER_WORKS } from "../types";
-import { CREAR_POST } from "../types";
-import { USER_MODIFY } from "../types";
-import { VER_PERFIL_USER } from "../types";
+import {
+  SHOW_CITIES,
+  SHOW_USER_PANEL,
+  SHOW_OFFER_WORKS,
+  CREAR_POST,
+  USER_MODIFY,
+  VER_PERFIL_USER,
+  CREAR_POST_USER,
+  UPDATE_USER,
+  SHOW_PROVINCES_NAME
+} from "../types";
 
 export function showOfferWorks() {
   axios
@@ -18,9 +23,16 @@ export function showOfferWorks() {
     .catch(error => console.log(error));
 }
 
+export function showCitiesId(name) {
+  axios.get(`http://localhost:8000/api/provinces/?${name}`).then(res => {
+    console.log("algo mi niño" + res);
+    store.dispatch({ type: SHOW_PROVINCES_NAME, payload: res.data });
+  });
+}
+
 export function showCities() {
   axios
-    .get("http://localhost:8000/api/ciudades")
+    .get("http://localhost:8000/api/provinces")
     .then(res => {
       store.dispatch({ type: SHOW_CITIES, payload: res.data });
     })
@@ -47,7 +59,7 @@ export function modifyUser(paramsBody, paramsHeaders) {
 }
 
 export function perfilUser() {
-  axios.get("http://localhost:8000/user/verperfil/${id}").then(res => {
+  axios.get("http://localhost:8000/user/verperfil/").then(res => {
     console.log(res);
     store.dispatch({ type: VER_PERFIL_USER, payload: res.data });
   });
@@ -59,3 +71,57 @@ export function crearPost() {
     store.dispatch({ type: CREAR_POST, payload: res.data });
   });
 }
+
+export function crearPostUser(send) {
+  axios
+    .post("http://localhost:8000/api/crearpost", send)
+    .then(res => {
+      console.log(res);
+      store.dispatch({ type: CREAR_POST_USER, payload: res.data });
+    })
+    .catch(error => console.log(error));
+}
+
+export function userEdit(userUp) {
+  console.log(userUp);
+  axios
+    .patch("http://localhost:8000/user/modificarperfil", userUp, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      }
+    })
+    .then(res => {
+      store.dispatch({ type: UPDATE_USER, payload: res.data });
+    });
+}
+
+// export const uploadImage = () => {
+//   const fd = new FormData();
+//   fd.append('image' )
+//   axios.post('http://localhost:8000/api/img/uploadImg')
+
+//   dispatch({ type: CREAR_POST });
+//   let data = new FormData();
+//   let quetienedata = data.append("image", {
+//     uri: image_path,
+//     name: "default.jpg",
+//     type: "image/jpg"
+//   });
+//   console.log(quetienedata);
+
+//   axios
+//     .post("http://localhost:8000/api/img/uploadImg", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "multipart/form-data"
+//       },
+//       body: data
+//     })
+//     .then(res => {
+//       console.log(res);
+//       //dispatch(crearPost());
+//       store.dispatch({ type: LOADING_USER, payload: res.data });
+//     })
+//     .catch(error => console.log(error));
+// };

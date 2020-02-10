@@ -31,3 +31,12 @@
 .items-anuncio h1 {
   color: red;
 }
+
+.modal-text {
+  width: 95%;
+  min-height: 100px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
