@@ -70,7 +70,7 @@ class PerfilUser extends Component {
         email: this.emailRef.current.value,
         address: this.addressRef.current.value,
         country: this.countryRef.current.value,
-        province_id: province[0]?.id,
+        //province_id: province[0]?.id,
         zip_code: this.zipCodeRef.current.value
       }
     });

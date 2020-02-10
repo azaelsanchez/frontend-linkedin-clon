@@ -13,6 +13,7 @@ import crearPostReducers from "./reducers/crearPostReducers";
 import uploadFileReducers from "./reducers/uploadFileReducers";
 import userUpdate from "./reducers/userEditReducers";
 import province_id from "./reducers/cityIdReducers";
+import offerDetails from "./reducers/offerDetailsReducers";
 
 const initialState = {};
 const middleware = { thunk };
@@ -28,6 +29,7 @@ const reducers = combineReducers({
   pUser: perfilUser,
   userUp: userUpdate,
   province: province_id,
+  offer: offerDetails,
   UI: uiReducer
 });
 

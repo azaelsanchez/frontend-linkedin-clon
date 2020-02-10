@@ -89,82 +89,99 @@ class Post extends Component {
     console.log(this.state.post);
   };
 
-  savePost = event => {
-    event.preventDefault();
-
-    // rellenar el estado con los datos del formulario;
-    this.changeState();
-
+  savePost = image_path => {
     // haremos petición por pos para guardar el post;
-    axios
-      .post("http://localhost:8000/api/crearpost", this.state.post)
-      .then(res => {
-        if (res.data.post) {
-          this.setState({
-            post: res.data.post,
-            status: "waiting"
-          });
+    try {
+      console.log("ei", image_path);
+      axios
+        .post("http://localhost:8000/api/crearpost", {
+          description: this.descriptionRef.current.value,
+          user_id: this.props.profile[0]?.id,
+          created_at: null,
+          image_path
+        })
+        .then(res => {
+          if (res.data.post) {
+            this.setState({
+              post: res.data?.post,
+              status: "waiting"
+            });
 
-          // subir imagen;
-          if (this.state.selectedFile !== null) {
-            // Sacaremos el id del articulo guardado;
-            let postId = this.state.post?.id;
+            // subir imagen;
+            if (this.state.selectedFile !== null) {
+              // Sacaremos el id del articulo guardado;
+              let postId = this.state.post?.id;
 
-            // Creo un form data para añadir el fichero;
-            const formData = new FormData();
+              // Creo un form data para añadir el fichero;
+              const formData = new FormData();
 
-            formData.append(
-              "image_path",
-              this.state.selectedFile,
-              this.state.selectedFile?.name
-            );
+              formData.append(
+                "image_path",
+                this.state.selectedFile,
+                this.state.selectedFile?.name
+              );
 
-            // Hago la petición ajax por medio de axios
+              // Hago la petición ajax por medio de axios
 
-            axios
-              .post("http://localhost:8000/api/img/uploadImg", postId, formData)
-              .then(res => {
-                if (res.data.post) {
-                  this.setState({
-                    post: res.data.post,
-                    status: "success"
-                  });
-                } else {
-                  this.setState({
-                    post: res.data.post,
-                    status: "failed"
-                  });
-                }
+              axios
+                .post(
+                  "http://localhost:8000/api/img/uploadImg",
+                  postId,
+                  formData
+                )
+                .then(res => {
+                  if (res.data.post) {
+                    this.setState({
+                      post: res.data.post,
+                      status: "success"
+                    });
+                  } else {
+                    this.setState({
+                      post: res.data.post,
+                      status: "failed"
+                    });
+                  }
+                });
+            } else {
+              this.setState({
+                status: "success"
               });
+            }
           } else {
             this.setState({
-              status: "success"
+              status: "failed"
             });
           }
-        } else {
-          this.setState({
-            status: "failed"
-          });
-        }
-      });
+        });
+    } catch (error) {
+      console.error(error);
+    }
   };
-
+  handleSubmit = async event => {
+    event.preventDefault();
+    try {
+      const res = await this.fileUpload();
+      await this.savePost(res?.data);
+      setTimeout(() => {
+        crearPost();
+      }, 1000);
+      this.closeModal();
+    } catch (error) {
+      console.error(error);
+    }
+  };
   fileUpload = () => {
     const fd = new FormData();
     fd.append("image", this.state.selectedFile, this.state.selectedFile.name);
-    axios
-      .post("http://localhost:8000/api/storage/", fd, {
-        onUploadProgress: progressEvent => {
-          console.log(
-            "Upload Progress: " +
-              Math.round((progressEvent.loaded / progressEvent.total) * 100) +
-              "%"
-          );
-        }
-      })
-      .then(res => {
-        console.log(res);
-      });
+    return axios.post("http://localhost:8000/api/storage/", fd, {
+      onUploadProgress: progressEvent => {
+        console.log(
+          "Upload Progress: " +
+            Math.round((progressEvent.loaded / progressEvent.total) * 100) +
+            "%"
+        );
+      }
+    });
   };
 
   render() {
@@ -186,7 +203,7 @@ class Post extends Component {
               show={this.state.modal}
               close={this.closeModal}
             >
-              <form className="form-modal" onSubmit={this.savePost}>
+              <form className="form-modal" onSubmit={this.handleSubmit}>
                 <textarea
                   ref={this.descriptionRef}
                   name="description"
@@ -212,24 +229,24 @@ class Post extends Component {
                   className="guardar-modal"
                   onChange={this.changeState}
                 /> */}
-                <button name="image" onClick={this.fileUpload}>
-                  PUBLICAR
-                </button>
+                <button name="image">PUBLICAR</button>
               </form>
             </Modal>
           </div>
           <div className="container-anuncios">
-            {this.props.post?.map(item => (
-              <div key={item.id} className="items-anuncio">
-                <h1>@ {item.name}</h1>
-                <img
-                  src="http://localhost:8000/api/storage/{item.image_path}"
-                  alt={item.description}
-                />
-                <h4>Descripción: {item.description} </h4>
-                <button>Comentar</button>
-              </div>
-            ))}
+            {this.props.post
+              ?.sort((a, b) => b.id - a.id)
+              ?.map(item => (
+                <div key={item.id} className="items-anuncio">
+                  <h1>@ {item.user?.name}</h1>
+                  <img
+                    src={`http://localhost:8000/storage/${item.image_path}`}
+                    alt={item.description}
+                  />
+                  <h4>Descripción: {item.description} </h4>
+                  <button>Comentar</button>
+                </div>
+              ))}
           </div>
         </div>
       </Fragment>

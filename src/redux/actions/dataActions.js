@@ -11,16 +11,22 @@ import {
   VER_PERFIL_USER,
   CREAR_POST_USER,
   UPDATE_USER,
-  SHOW_PROVINCES_NAME
+  SHOW_PROVINCES_NAME,
+  OFFER_DETAILS
 } from "../types";
 
 export function showOfferWorks() {
   axios
-    .get("http://localhost:8000/api/anuncio")
+    .get("http://localhost:8000/api/anuncio/")
     .then(res => {
+      console.log(res);
       store.dispatch({ type: SHOW_OFFER_WORKS, payload: res.data });
     })
     .catch(error => console.log(error));
+}
+
+export function offerDetails(item) {
+  store.dispatch({ type: OFFER_DETAILS, payload: item });
 }
 
 export function showCitiesId(name) {
