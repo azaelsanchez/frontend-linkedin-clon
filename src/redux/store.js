@@ -10,12 +10,15 @@ import modificarUser from "./reducers/modificarUser";
 import uiReducer from "./reducers/uiReducer";
 import perfilUser from "./reducers/perfilUser";
 import crearPostReducers from "./reducers/crearPostReducers";
+import uploadFileReducers from "./reducers/uploadFileReducers";
+import userUpdate from "./reducers/userEditReducers";
+import province_id from "./reducers/cityIdReducers";
 
 const initialState = {};
 const middleware = { thunk };
 const reducers = combineReducers({
   // Aquí cargamos todos los reducers
-
+  file: uploadFileReducers,
   user: userProfileReducer,
   city: cityReducer,
   data: offerWorksReducer,
@@ -23,6 +26,8 @@ const reducers = combineReducers({
   datapost: crearPostReducers,
   mUser: modificarUser,
   pUser: perfilUser,
+  userUp: userUpdate,
+  province: province_id,
   UI: uiReducer
 });
 

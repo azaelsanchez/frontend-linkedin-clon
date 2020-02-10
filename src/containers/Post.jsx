@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from "react";
+import { Redirect } from "react-router-dom";
+import axios from "axios";
 import { connect } from "react-redux";
 
 // Redux;
-import { crearPost } from "../redux/actions/dataActions";
-import { crearPostUser } from "../redux/actions/dataActions";
+import { crearPost, showUserPanel } from "../redux/actions/dataActions";
 
 import PanelUser from "../components/Panel-user";
 import Navbar from "../components/Navbar";
@@ -16,16 +17,20 @@ class Post extends Component {
     super(props);
     this.state = {
       modal: false,
-      posting: {
-        image: "",
-        description: ""
-      }
+      post: {
+        image_path: null,
+        description: "",
+        user_id: null,
+        created_at: null
+      },
+      status: null,
+      selectedFile: null
     };
   }
 
   componentDidMount() {
     crearPost();
-    crearPostUser();
+    showUserPanel();
   }
 
   openModal = () => {
@@ -36,19 +41,137 @@ class Post extends Component {
     this.setState({ modal: false });
   };
 
-  onChange = event => {
-    event.preventDefault();
-    let post = Object.assign({}, this.state.posting);
-    this.setState({ posting: post });
-    console.log(post);
+  // onUpdateImage = event => {
+  //   event.preventDefault();
+
+  //   const fd = new FormData();
+  //   fd.append("image", this.state.selectedFile, this.state.selectedFile.name);
+  //   axios
+  //     .post("http://localhost:8000/api/storage", fd, {
+  //       onUploadProgress: ProgressEvent => {
+  //         console.log(
+  //           "Upload Progress: " +
+  //             Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100) +
+  //             "%"
+  //         );
+  //       }
+  //     })
+  //     .then(res => {
+  //       console.log(res);
+  //     })
+  //     .catch(error => console.log(error));
+  // };
+
+  image_pathRef = React.createRef();
+  descriptionRef = React.createRef();
+
+  formatter = new Intl.DateTimeFormat("en-GB", {
+    year: "numeric",
+    month: "long",
+    day: "2-digit"
+  });
+  fileChange = event => {
+    this.setState({
+      selectedFile: event.target.files[0]
+    });
+  };
+  changeState = () => {
+    //const dateString = "2019-10-30T14:01:59.689Z";
+
+    this.setState({
+      post: {
+        image_path: this.state.selectedFile?.name,
+        description: this.descriptionRef.current.value,
+        user_id: this.props.profile[0]?.id,
+        created_at: null
+      }
+    });
+    console.log(this.state.post);
   };
 
-  onClick = event => {
+  savePost = event => {
     event.preventDefault();
-    // console.log(event);
+
+    // rellenar el estado con los datos del formulario;
+    this.changeState();
+
+    // haremos petición por pos para guardar el post;
+    axios
+      .post("http://localhost:8000/api/crearpost", this.state.post)
+      .then(res => {
+        if (res.data.post) {
+          this.setState({
+            post: res.data.post,
+            status: "waiting"
+          });
+
+          // subir imagen;
+          if (this.state.selectedFile !== null) {
+            // Sacaremos el id del articulo guardado;
+            let postId = this.state.post?.id;
+
+            // Creo un form data para añadir el fichero;
+            const formData = new FormData();
+
+            formData.append(
+              "image_path",
+              this.state.selectedFile,
+              this.state.selectedFile?.name
+            );
+
+            // Hago la petición ajax por medio de axios
+
+            axios
+              .post("http://localhost:8000/api/img/uploadImg", postId, formData)
+              .then(res => {
+                if (res.data.post) {
+                  this.setState({
+                    post: res.data.post,
+                    status: "success"
+                  });
+                } else {
+                  this.setState({
+                    post: res.data.post,
+                    status: "failed"
+                  });
+                }
+              });
+          } else {
+            this.setState({
+              status: "success"
+            });
+          }
+        } else {
+          this.setState({
+            status: "failed"
+          });
+        }
+      });
+  };
+
+  fileUpload = () => {
+    const fd = new FormData();
+    fd.append("image", this.state.selectedFile, this.state.selectedFile.name);
+    axios
+      .post("http://localhost:8000/api/storage/", fd, {
+        onUploadProgress: progressEvent => {
+          console.log(
+            "Upload Progress: " +
+              Math.round((progressEvent.loaded / progressEvent.total) * 100) +
+              "%"
+          );
+        }
+      })
+      .then(res => {
+        console.log(res);
+      });
   };
 
   render() {
+    // if (this.state.status === "success") {
+    //   //return this.props.history.push("/post");
+    //   return <Redirect to="/post" />;
+    // }
     return (
       <Fragment>
         <Navbar />
@@ -63,36 +186,46 @@ class Post extends Component {
               show={this.state.modal}
               close={this.closeModal}
             >
-              <form className="form-modal">
-                <input
-                  type="file"
-                  defaultValue={this.state.posting.image}
-                  name="image"
-                  onChange={this.onChange}
-                />
+              <form className="form-modal" onSubmit={this.savePost}>
                 <textarea
-                  name="modal-post"
+                  ref={this.descriptionRef}
+                  name="description"
                   placeholder="¿A quién has salvado ultimamente?"
-                  onChange={this.onChange}
-                  defaultValue={this.state.posting.description}
+                  onChange={this.changeState}
                   className="modal-text"
                 ></textarea>
-              </form>
-              <div className="modal-footer">
+
+                <input
+                  ref={this.image_pathRef}
+                  id="imageInput"
+                  type="file"
+                  name="image"
+                  onChange={this.fileChange}
+                />
+
                 <button className="btn-cancel" onClick={this.closeModal}>
-                  CLOSE
+                  CERRAR
                 </button>
-                <button className="btn-continue" onClick={this.onClick}>
-                  CONTINUE
+                {/* <input
+                  type="submit"
+                  value="PUBLICAR"
+                  className="guardar-modal"
+                  onChange={this.changeState}
+                /> */}
+                <button name="image" onClick={this.fileUpload}>
+                  PUBLICAR
                 </button>
-              </div>
+              </form>
             </Modal>
           </div>
           <div className="container-anuncios">
             {this.props.post?.map(item => (
-              <div className="items-anuncio">
+              <div key={item.id} className="items-anuncio">
                 <h1>@ {item.name}</h1>
-                <img src={item.image_path} alt={item.description} />
+                <img
+                  src="http://localhost:8000/api/storage/{item.image_path}"
+                  alt={item.description}
+                />
                 <h4>Descripción: {item.description} </h4>
                 <button>Comentar</button>
               </div>
@@ -105,10 +238,10 @@ class Post extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state);
   return {
     post: state.post.post,
-    posting: state.datapost.posting
+    posting: state.datapost.posting,
+    profile: state.user.profile
   };
 }
 
