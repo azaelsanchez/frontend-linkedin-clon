@@ -30,7 +30,10 @@ class PerfilUser extends Component {
       modal: false
     };
   }
-  componentDidMount() {}
+  componentDidMount() {
+    showUserPanel();
+    showCities();
+  }
 
   openModal = () => {
     this.setState({ modal: true });
@@ -50,19 +53,13 @@ class PerfilUser extends Component {
   provinceRef = React.createRef();
   zipCodeRef = React.createRef();
 
-  onChange = async () => {
-    await showUserPanel();
-    await showCities();
-  };
-
-  saveUser = async event => {
-    event.preventDefault();
-    const user = await this.props.profile;
-    const province = this.props.cities;
+  onChange = event => {
+    const user = this.props.profile;
+    let provinces = this.props.cities;
 
     // console.log("mierda " + province);
-    province[event.target.name] = event.target.value;
-    console.log(event.target.name);
+    provinces[event.target.name] = event.target.value;
+    console.log(provinces);
     this.setState({
       userM: {
         id: user[0]?.id,
@@ -73,10 +70,15 @@ class PerfilUser extends Component {
         email: this.emailRef.current.value,
         address: this.addressRef.current.value,
         country: this.countryRef.current.value,
-        province_id: province,
+        province_id: this.provinceRef.current.value,
         zip_code: this.zipCodeRef.current.value
       }
     });
+    //console.log(this.state.userM);
+  };
+
+  saveUser = async event => {
+    event.preventDefault();
 
     const userUp = await this.state.userM;
     console.log(userUp);
@@ -87,7 +89,8 @@ class PerfilUser extends Component {
 
   render() {
     const user = this.props.profile;
-
+    const province = this.state.userM;
+    console.log(province);
     return (
       <div className="noticias-post">
         <Navbar />
@@ -170,16 +173,12 @@ class PerfilUser extends Component {
               onChange={this.onChange}
               className="form-control"
               id="exampleFormControlSelect2"
+              ref={this.provinceRef}
+              name={province?.province_id}
+              //value="province"
             >
               {this.props.cities?.map(city => (
-                <option
-                  value={city.id}
-                  name={city.id}
-                  ref={this.provinceRef}
-                  key={city?.id}
-                >
-                  {city?.city}
-                </option>
+                <option>{city?.city}</option>
               ))}
             </select>
             <input

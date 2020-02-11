@@ -1,22 +1,16 @@
 import React from "react";
 
-export const RegisterForm = ({
+export const RegisterCompanyForm = ({
   onChange,
   onSubmit,
-  user: { name, surname, email, password, repeatPassword }
+  company: { name, cif, email, password, repeatPassword }
 }) => (
   <form className="form" onSubmit={onSubmit}>
     <label htmlFor="name">Name</label>
     <input type="text" id="name" name="name" value={name} onChange={onChange} />
 
-    <label htmlFor="surname">Surname</label>
-    <input
-      type="text"
-      id="surname"
-      name="surname"
-      value={surname}
-      onChange={onChange}
-    />
+    <label htmlFor="cif">Cif.</label>
+    <input type="text" id="cif" name="cif" value={cif} onChange={onChange} />
 
     <label htmlFor="email">Email</label>
     <input
@@ -51,5 +45,3 @@ export const RegisterForm = ({
     </div>
   </form>
 );
-
-
