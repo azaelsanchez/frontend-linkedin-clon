@@ -24,6 +24,7 @@ class PerfilUser extends Component {
         province_id: null,
         zip_code: null
       },
+      
       modal: false
     };
   }
