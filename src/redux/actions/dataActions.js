@@ -51,19 +51,7 @@ export function showUserPanel() {
   store.dispatch({ type: SHOW_USER_PANEL, payload: userStore });
 }
 
-// export function modifyUser(paramsBody, paramsHeaders) {
-//   axios
-//     .post(
-//       "http://localhost:8000/user/modificarperfil",
-//       paramsBody,
-//       paramsHeaders
-//     )
-//     .then(res => {
-//       store.dispatch({ type: USER_MODIFY, payload: [] });
-//       return res.data.message;
-//     })
-//     .catch(err => console.log(err));
-// }
+
 
 export function perfilUser() {
   axios.get("http://localhost:8000/user/verperfil/").then(res => {

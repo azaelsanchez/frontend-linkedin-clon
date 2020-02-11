@@ -44,11 +44,11 @@ class Post extends Component {
   image_pathRef = React.createRef();
   descriptionRef = React.createRef();
 
-  formatter = new Intl.DateTimeFormat("en-GB", {
-    year: "numeric",
-    month: "long",
-    day: "2-digit"
-  });
+  // formatter = new Intl.DateTimeFormat("en-GB", {
+  //   year: "numeric",
+  //   month: "long",
+  //   day: "2-digit"
+  // });
   fileChange = event => {
     this.setState({
       selectedFile: event.target.files[0]
@@ -134,7 +134,7 @@ class Post extends Component {
               show={this.state.modal}
               close={this.closeModal}
             >
-              <form className="form-modal" onSubmit={this.hadleSubmitn}>
+              <form className="form-modal" onSubmit={this.handleSubmit}>
                 <textarea
                   ref={this.descriptionRef}
                   name="description"
@@ -154,12 +154,7 @@ class Post extends Component {
                 <button className="btn-cancel" onClick={this.closeModal}>
                   CERRAR
                 </button>
-                {/* <input
-                  type="submit"
-                  value="PUBLICAR"
-                  className="guardar-modal"
-                  onChange={this.changeState}
-                /> */}
+
                 <button name="image">PUBLICAR</button>
               </form>
             </Modal>
@@ -171,7 +166,7 @@ class Post extends Component {
                 <div key={item.id} className="items-anuncio">
                   <h1>@ {item.user?.name}</h1>
                   <img
-                    src={`http://localhost:8000/storage/${item.image_path}`}
+                    src={`http://localhost:8000/storage/${item?.image_path}`}
                     alt={item.description}
                   />
                   <h4>Descripción: {item.description} </h4>
