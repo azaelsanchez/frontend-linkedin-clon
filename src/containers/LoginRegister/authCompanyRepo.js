@@ -90,3 +90,5 @@ const authCompanyRepo = () => {
     logout
   };
 };
+
+export default authCompanyRepo();
