@@ -6,7 +6,8 @@ import { connect } from "react-redux";
 import PanelUser from "../components/Panel-user";
 import Navbar from "../components/Navbar";
 
-import { showOfferWorks } from "../redux/actions/dataActions";
+import { showOfferWorks, offerDetails } from "../redux/actions/dataActions";
+
 import "./Noticias.css";
 
 class Noticias extends Component {
@@ -15,6 +16,11 @@ class Noticias extends Component {
   }
 
   getNoticiasBySearch = search => {};
+
+  goToOfferDetails = item => {
+    this.props.history.push(`/oferta/${item.id}/${item.name}`);
+    offerDetails(item);
+  };
 
   render() {
     return (
@@ -33,6 +39,9 @@ class Noticias extends Component {
                 <p>Tipo de jornada: {item.working_day} </p>
                 <p>Sector: {item.sector} </p>
                 <p>Habilidades requeridas: {item.required_skills} </p>
+                <button onClick={this.goToOfferDetails.bind(this, item)}>
+                  Más información
+                </button>
               </div>
             ))}
           </div>
@@ -44,7 +53,8 @@ class Noticias extends Component {
 
 function mapStateToProps(state) {
   return {
-    offer: state.data.offer
+    offer: state.data.offer,
+    detail: state.offer.detail
   };
 }
 

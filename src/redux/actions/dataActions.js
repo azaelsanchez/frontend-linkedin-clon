@@ -51,8 +51,6 @@ export function showUserPanel() {
   store.dispatch({ type: SHOW_USER_PANEL, payload: userStore });
 }
 
-
-
 export function perfilUser() {
   axios.get("http://localhost:8000/user/verperfil/").then(res => {
     console.log(res);
@@ -89,33 +87,3 @@ export function userEdit(userUp) {
       store.dispatch({ type: UPDATE_USER, payload: res.data });
     });
 }
-
-// export const uploadImage = () => {
-//   const fd = new FormData();
-//   fd.append('image' )
-//   axios.post('http://localhost:8000/api/img/uploadImg')
-
-//   dispatch({ type: CREAR_POST });
-//   let data = new FormData();
-//   let quetienedata = data.append("image", {
-//     uri: image_path,
-//     name: "default.jpg",
-//     type: "image/jpg"
-//   });
-//   console.log(quetienedata);
-
-//   axios
-//     .post("http://localhost:8000/api/img/uploadImg", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "multipart/form-data"
-//       },
-//       body: data
-//     })
-//     .then(res => {
-//       console.log(res);
-//       //dispatch(crearPost());
-//       store.dispatch({ type: LOADING_USER, payload: res.data });
-//     })
-//     .catch(error => console.log(error));
-// };
