@@ -20,11 +20,11 @@ const authRepository = () => {
         .post("login/", user)
         .then(res => {
           console.log(res);
-          localStorage.setItem(
+          if (res.data?.remember_token) localStorage.setItem(
             tokenName,
             JSON.stringify(res.data.remember_token)
           );
-          localStorage.setItem(userStore, JSON.stringify(res.data.user));
+          if (res.data?.user) localStorage.setItem(userStore, JSON.stringify(res.data.user));
           resol(res.config);
         })
         .catch(error => {

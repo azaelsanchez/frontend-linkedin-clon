@@ -45,7 +45,9 @@ export function showCities() {
 }
 
 export function showUserPanel() {
-  const userStore = JSON.parse(localStorage.getItem("user"));
+  const userStore = localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
+    : {};
   store.dispatch({ type: SHOW_USER_PANEL, payload: userStore });
 }
 
@@ -90,7 +92,11 @@ export function crearPostUser(send) {
 export function userEdit(userUp) {
   console.log(userUp);
   axios
-    .patch("http://localhost:8000/user/modificarperfil", userUp)
+    .patch("http://localhost:8000/user/modificarperfil", userUp, {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
     .then(res => {
       store.dispatch({ type: UPDATE_USER, payload: res.data });
     });

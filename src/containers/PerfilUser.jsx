@@ -3,10 +3,12 @@ import { connect } from "react-redux";
 
 import Navbar from "../components/Navbar";
 import "./Noticias.css";
-import { showUserPanel, showCities } from "../redux/actions/dataActions";
+import {
+  showUserPanel,
+  showCities,
+  userEdit
+} from "../redux/actions/dataActions";
 import Modal from "../components/Modal";
-
-import { userEdit } from "../redux/actions/dataActions";
 
 class PerfilUser extends Component {
   constructor() {
@@ -24,7 +26,7 @@ class PerfilUser extends Component {
         province_id: null,
         zip_code: null
       },
-      
+
       modal: false
     };
   }
