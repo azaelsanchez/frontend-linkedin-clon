@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import * as firebase from "firebase";
 
 import App from "./containers/App";
 
@@ -11,15 +10,6 @@ import Noticias from "./containers/Noticias.jsx";
 import Post from "./containers/Post.jsx";
 import ModificarPerfilUser from "./containers/ModificarPerfilUser";
 import PerfilUser from "./containers/PerfilUser";
-
-const config = {
-  apiKey: "AIzaSy*********************",
-  authDomain: "react-firebase-94af6.firebaseapp.com",
-  databaseURL: "https://react-firebase-94af6.firebaseio.com",
-  storageBucket: "react-firebase-94af6.appspot.com",
-  messagingSenderId: "7968**********"
-};
-firebase.initializeApp(config);
 
 const Router = () => {
   return (

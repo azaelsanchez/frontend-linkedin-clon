@@ -7,7 +7,6 @@ import {
   SHOW_USER_PANEL,
   SHOW_OFFER_WORKS,
   CREAR_POST,
-  USER_MODIFY,
   VER_PERFIL_USER,
   CREAR_POST_USER,
   UPDATE_USER,
@@ -50,19 +49,19 @@ export function showUserPanel() {
   store.dispatch({ type: SHOW_USER_PANEL, payload: userStore });
 }
 
-export function modifyUser(paramsBody, paramsHeaders) {
-  axios
-    .post(
-      "http://localhost:8000/user/modificarperfil",
-      paramsBody,
-      paramsHeaders
-    )
-    .then(res => {
-      store.dispatch({ type: USER_MODIFY, payload: [] });
-      return res.data.message;
-    })
-    .catch(err => console.log(err));
-}
+// export function modifyUser(paramsBody, paramsHeaders) {
+//   axios
+//     .post(
+//       "http://localhost:8000/user/modificarperfil",
+//       paramsBody,
+//       paramsHeaders
+//     )
+//     .then(res => {
+//       store.dispatch({ type: USER_MODIFY, payload: [] });
+//       return res.data.message;
+//     })
+//     .catch(err => console.log(err));
+// }
 
 export function perfilUser() {
   axios.get("http://localhost:8000/user/verperfil/").then(res => {
@@ -91,12 +90,7 @@ export function crearPostUser(send) {
 export function userEdit(userUp) {
   console.log(userUp);
   axios
-    .patch("http://localhost:8000/user/modificarperfil", userUp, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      }
-    })
+    .patch("http://localhost:8000/user/modificarperfil", userUp)
     .then(res => {
       store.dispatch({ type: UPDATE_USER, payload: res.data });
     });

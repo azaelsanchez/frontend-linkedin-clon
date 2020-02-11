@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Redirect } from "react-router-dom";
+
 import axios from "axios";
 import { connect } from "react-redux";
 
@@ -23,7 +23,7 @@ class Post extends Component {
         user_id: null,
         created_at: null
       },
-      status: null,
+
       selectedFile: null
     };
   }
@@ -40,27 +40,6 @@ class Post extends Component {
   closeModal = () => {
     this.setState({ modal: false });
   };
-
-  // onUpdateImage = event => {
-  //   event.preventDefault();
-
-  //   const fd = new FormData();
-  //   fd.append("image", this.state.selectedFile, this.state.selectedFile.name);
-  //   axios
-  //     .post("http://localhost:8000/api/storage", fd, {
-  //       onUploadProgress: ProgressEvent => {
-  //         console.log(
-  //           "Upload Progress: " +
-  //             Math.round((ProgressEvent.loaded / ProgressEvent.total) * 100) +
-  //             "%"
-  //         );
-  //       }
-  //     })
-  //     .then(res => {
-  //       console.log(res);
-  //     })
-  //     .catch(error => console.log(error));
-  // };
 
   image_pathRef = React.createRef();
   descriptionRef = React.createRef();
@@ -92,7 +71,7 @@ class Post extends Component {
   savePost = image_path => {
     // haremos petición por pos para guardar el post;
     try {
-      console.log("ei", image_path);
+      console.log(image_path);
       axios
         .post("http://localhost:8000/api/crearpost", {
           description: this.descriptionRef.current.value,
@@ -101,57 +80,9 @@ class Post extends Component {
           image_path
         })
         .then(res => {
-          if (res.data.post) {
-            this.setState({
-              post: res.data?.post,
-              status: "waiting"
-            });
-
-            // subir imagen;
-            if (this.state.selectedFile !== null) {
-              // Sacaremos el id del articulo guardado;
-              let postId = this.state.post?.id;
-
-              // Creo un form data para añadir el fichero;
-              const formData = new FormData();
-
-              formData.append(
-                "image_path",
-                this.state.selectedFile,
-                this.state.selectedFile?.name
-              );
-
-              // Hago la petición ajax por medio de axios
-
-              axios
-                .post(
-                  "http://localhost:8000/api/img/uploadImg",
-                  postId,
-                  formData
-                )
-                .then(res => {
-                  if (res.data.post) {
-                    this.setState({
-                      post: res.data.post,
-                      status: "success"
-                    });
-                  } else {
-                    this.setState({
-                      post: res.data.post,
-                      status: "failed"
-                    });
-                  }
-                });
-            } else {
-              this.setState({
-                status: "success"
-              });
-            }
-          } else {
-            this.setState({
-              status: "failed"
-            });
-          }
+          this.setState({
+            post: res.data?.post
+          });
         });
     } catch (error) {
       console.error(error);
@@ -203,7 +134,7 @@ class Post extends Component {
               show={this.state.modal}
               close={this.closeModal}
             >
-              <form className="form-modal" onSubmit={this.handleSubmit}>
+              <form className="form-modal" onSubmit={this.hadleSubmitn}>
                 <textarea
                   ref={this.descriptionRef}
                   name="description"

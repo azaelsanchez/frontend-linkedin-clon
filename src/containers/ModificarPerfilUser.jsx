@@ -1,18 +1,15 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 
 //import axios from "axios";
 
 import Navbar from "../components/Navbar";
-import { modifyUser } from "../redux/actions/dataActions";
+// import { modifyUser } from "../redux/actions/dataActions";
 //import "./Noticias.css";
 
 class ModificarPerfilUser extends Component {
   constructor(props) {
     super(props);
-  }
-  componentDidMount() {
-    modifyUser();
   }
 
   render() {
@@ -63,10 +60,10 @@ class ModificarPerfilUser extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    modificarUser: state.data.modificarUser
-  };
-}
+// function mapStateToProps(state) {
+//   return {
+//     modificarUser: state.data.modificarUser
+//   };
+// }
 
-export default connect(mapStateToProps)(ModificarPerfilUser);
+export default ModificarPerfilUser;

@@ -3,11 +3,7 @@ import { connect } from "react-redux";
 
 import Navbar from "../components/Navbar";
 import "./Noticias.css";
-import {
-  showUserPanel,
-  showCities,
-  showCitiesId
-} from "../redux/actions/dataActions";
+import { showUserPanel, showCities } from "../redux/actions/dataActions";
 import Modal from "../components/Modal";
 
 import { userEdit } from "../redux/actions/dataActions";
@@ -28,14 +24,10 @@ class PerfilUser extends Component {
         province_id: null,
         zip_code: null
       },
-      modal: false,
-      provincia_nombre: null
+      modal: false
     };
   }
-  componentDidMount() {
-    showUserPanel();
-    showCities();
-  }
+  componentDidMount() {}
 
   openModal = () => {
     this.setState({ modal: true });
@@ -55,11 +47,19 @@ class PerfilUser extends Component {
   provinceRef = React.createRef();
   zipCodeRef = React.createRef();
 
-  onChange = () => {
-    const user = this.props.profile;
-    const province = this.props.province_id;
-    console.log("mierda " + province);
+  onChange = async () => {
+    await showUserPanel();
+    await showCities();
+  };
 
+  saveUser = async event => {
+    event.preventDefault();
+    const user = await this.props.profile;
+    const province = this.props.cities;
+
+    // console.log("mierda " + province);
+    province[event.target.name] = event.target.value;
+    console.log(event.target.name);
     this.setState({
       userM: {
         id: user[0]?.id,
@@ -70,21 +70,16 @@ class PerfilUser extends Component {
         email: this.emailRef.current.value,
         address: this.addressRef.current.value,
         country: this.countryRef.current.value,
-        //province_id: province[0]?.id,
+        province_id: province,
         zip_code: this.zipCodeRef.current.value
       }
     });
-  };
 
-  saveUser = event => {
-    event.preventDefault();
-    console.log(event);
-    const userUp = this.state.userM;
-    this.onChange();
-    showCitiesId(this.state.provincia_nombre);
+    const userUp = await this.state.userM;
+    console.log(userUp);
+    //this.onChange(event);
     userEdit(userUp);
-    this.closeModal();
-    console.log(this.state);
+    //this.closeModal();
   };
 
   render() {
@@ -169,12 +164,19 @@ class PerfilUser extends Component {
             />
 
             <select
-              ref={this.provinceRef}
+              onChange={this.onChange}
               className="form-control"
               id="exampleFormControlSelect2"
             >
               {this.props.cities?.map(city => (
-                <option key={city.id}>{city.city}</option>
+                <option
+                  value={city.id}
+                  name={city.id}
+                  ref={this.provinceRef}
+                  key={city?.id}
+                >
+                  {city?.city}
+                </option>
               ))}
             </select>
             <input
@@ -207,8 +209,8 @@ class PerfilUser extends Component {
 function mapStateToProps(state) {
   return {
     profile: state.user.profile,
-    cities: state.city.cities,
-    province: state.province.province_id
+    cities: state.city.cities
+    // province: state.province.province_id
   };
 }
 
