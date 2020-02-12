@@ -22,7 +22,7 @@ class Search extends Component {
 
   handleSubmitSearch = event => {
     event.preventDefault();
-    searchCity(this.state.search);
+    SearchCity(this.state.search);
   };
 
   render() {

@@ -1,16 +1,35 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Axios from 'axios';
+
 
 import { offerDetails } from "../redux/actions/dataActions";
+import Navbar from "../components/Navbar";
+import {showUserPanel} from "../redux/actions/dataActions";
 
 class OfferDetails extends Component {
   componentDidMount() {
     // offerDetails();
+    showUserPanel()
+  }
+  aceptarOffer(num){
+    const user = this.props.profile;
+    const idOffer = {
+      id_offer_works: num,
+      id_user: user[0].id
+    }
+    Axios.post(`http://localhost:8000/user/solicitaroferta`).then(res => {
+      console.log("algo mi niño" + res);})
+    .catch(err => console.error(err))
+
   }
 
+
   renderOfferWorks = item => {
-    console.log(item, "algpç");
+    console.log(item, "algpo");
     return (
+      <div className="noticias-post">
+      <Navbar />
       <div {...this.props.detail} className="container-details">
         <div key={item?.id} className="offer-container">
           <h1>{item?.title_offer}</h1>
@@ -24,6 +43,8 @@ class OfferDetails extends Component {
           <p> {item?.working_day} </p>
           <h4> Habilidades requeridas </h4>
           <p> {item?.required_skills} </p>
+          <button onClick={(ev) => this.aceptarOffer(item.id)} >Aceptar</button>
+        </div>
         </div>
       </div>
     );
@@ -37,7 +58,9 @@ class OfferDetails extends Component {
 }
 function mapStateToProps(state) {
   return {
-    detail: state.details.detail
+    detail: state.details.detail,
+    profile: state.user.profile,
+
   };
 }
 
