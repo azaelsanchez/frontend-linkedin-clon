@@ -14,6 +14,7 @@ import uploadFileReducers from "./reducers/uploadFileReducers";
 import userUpdate from "./reducers/userEditReducers";
 import province_id from "./reducers/cityIdReducers";
 import offerDetails from "./reducers/offerDetailsReducers";
+import verCurriculum from "./reducers/verCurriculumReducer";
 
 const initialState = {};
 const middleware = { thunk };
@@ -30,6 +31,7 @@ const reducers = combineReducers({
   userUp: userUpdate,
   province: province_id,
   offer: offerDetails,
+  cv:verCurriculum,
   UI: uiReducer
 });
 

@@ -21,3 +21,5 @@ export const USER_MODIFY = "USER_MODIFY";
 export const VER_PERFIL_USER = "VER_PERFIL_USER";
 export const CREAR_POST_USER = "CREAR_POST_USER";
 export const OFFER_DETAILS = "OFFER_DETAILS";
+export const VER_CV = "VER_CV";
+// export const CREAR_CV = "CREAR_CV";

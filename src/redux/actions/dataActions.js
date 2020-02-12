@@ -11,7 +11,9 @@ import {
   CREAR_POST_USER,
   UPDATE_USER,
   SHOW_PROVINCES_NAME,
-  OFFER_DETAILS
+  OFFER_DETAILS,
+  VER_CV,
+  // CREAR_CV
 } from "../types";
 
 export function showOfferWorks() {
@@ -74,6 +76,23 @@ export function crearPostUser(send) {
     })
     .catch(error => console.log(error));
 }
+
+export function verCurriculum(id) {
+  axios.get(`http://localhost:8000/vercurriculum/${id}`).then(res => {
+    console.log(res);
+    store.dispatch({ type: VER_CV, payload: res.data });
+  });
+}
+
+// export function crearCurriculum(send) {
+//   axios
+//     .post("http://localhost:8000/api/curriculum'", send)
+//     .then(res => {
+//       console.log(res);
+//       store.dispatch({ type: CREAR_CV, payload: res.data });
+//     })
+//     .catch(error => console.log(error));
+// }
 
 export function userEdit(userUp) {
   console.log(userUp);
