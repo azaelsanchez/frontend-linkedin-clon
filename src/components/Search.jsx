@@ -9,32 +9,28 @@ class Search extends Component {
       search: null
     };
   }
-  componentDidMount() {
-    SearchCity();
-  }
+  componentDidMount() {}
 
   searchRef = React.createRef();
   handleSearchChange = event => {
     event.preventDefault();
+    const query = event.target.value;
+    this.setState({
+      search: query
+    });
   };
 
-  handleSubmitSearch = (event, ciudad) => {
+  handleSubmitSearch = event => {
     event.preventDefault();
-    const searchCity = event.target.value;
-    this.setState({
-      search: searchCity
-    });
-    console.log(this.state.search);
+    searchCity(this.state.search);
   };
 
   render() {
-    let filter = this.props.search;
-    console.log(filter);
     return (
       <div className="container-search">
         <form onSubmit={this.handleSubmitSearch} className="container-search">
           <input
-            search={this.state.search}
+            value={this.state.search}
             ref={this.searchRef}
             name="search"
             onChange={this.handleSearchChange}
@@ -43,7 +39,7 @@ class Search extends Component {
           />
         </form>
         <div className="search-list">
-          {filter.map(item => (
+          {this.props.citiesFound.map(item => (
             <li> {item.city} </li>
           ))}
         </div>
@@ -54,7 +50,7 @@ class Search extends Component {
 
 function mapStateToProps(state) {
   return {
-    search: state.searching.search
+    citiesFound: state.searching.citiesFound
   };
 }
 

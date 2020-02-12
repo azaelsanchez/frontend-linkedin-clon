@@ -13,6 +13,7 @@ import Post from "./containers/Post.jsx";
 import ModificarPerfilUser from "./containers/ModificarPerfilUser";
 import PerfilUser from "./containers/PerfilUser";
 import offerDetails from "./containers/OfferDetails";
+import verCurriculum from "./containers/CurriculumUser";
 
 const Router = () => {
   return (
@@ -28,6 +29,7 @@ const Router = () => {
         <Route exact path="/post" component={Post} />
         <Route exact path="/modificaruser" component={ModificarPerfilUser} />
         <Route exact path="/PerfilUser" component={PerfilUser} />
+        <Route exact path="/curriculum" component={verCurriculum} />
       </Switch>
     </BrowserRouter>
   );

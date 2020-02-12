@@ -12,7 +12,10 @@ import {
   UPDATE_USER,
   SHOW_PROVINCES_NAME,
   OFFER_DETAILS,
-  SEARCH_CITY
+  SEARCH_CITY,
+  VER_CV,
+  // CREAR_CV
+
 } from "../types";
 
 export function showOfferWorks() {
@@ -76,6 +79,13 @@ export function crearPostUser(send) {
       store.dispatch({ type: CREAR_POST_USER, payload: res.data });
     })
     .catch(error => console.log(error));
+}
+
+export function verCurriculum(id) {
+  axios.get(`http://localhost:8000/vercurriculum/${id}`).then(res => {
+    console.log(res);
+    store.dispatch({ type: VER_CV, payload: res.data });
+  });
 }
 
 export function userEdit(userUp) {
