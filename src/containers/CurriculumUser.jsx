@@ -12,7 +12,7 @@ import "./Noticias.css";
 
 class Curriculum extends Component {
   componentDidMount() {
-    verCurriculum();
+    verCurriculum() ;
   }
 
   render() {
