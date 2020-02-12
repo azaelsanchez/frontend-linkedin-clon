@@ -44,11 +44,7 @@ class Post extends Component {
   image_pathRef = React.createRef();
   descriptionRef = React.createRef();
 
-  // formatter = new Intl.DateTimeFormat("en-GB", {
-  //   year: "numeric",
-  //   month: "long",
-  //   day: "2-digit"
-  // });
+
   fileChange = event => {
     this.setState({
       selectedFile: event.target.files[0]
@@ -116,10 +112,7 @@ class Post extends Component {
   };
 
   render() {
-    // if (this.state.status === "success") {
-    //   //return this.props.history.push("/post");
-    //   return <Redirect to="/post" />;
-    // }
+   
     return (
       <Fragment>
         <Navbar />

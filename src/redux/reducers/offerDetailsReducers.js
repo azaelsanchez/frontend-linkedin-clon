@@ -7,7 +7,7 @@ const initialState = {
 export function offerDetails(state = initialState, action) {
   switch (action.type) {
     case OFFER_DETAILS:
-      return Object.assign({}, state, { detail: action.payload });
+      return { detail: action.payload };
 
     default:
       return { ...state };

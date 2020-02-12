@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import Search from "./Search";
+
 import "./css/Navbar.css";
 
 function Navbar() {
@@ -9,9 +11,10 @@ function Navbar() {
       <div className="logo">
         <img src="/assets/img/logo-linkedin-clon.png" alt="logo" />
       </div>
-      <div className="input-search">
+      <Search />
+      {/* <div className="input-search">
         <input type="search" placeholder="Buscar..." />
-      </div>
+      </div> */}
       <ul className="menu-principal">
         <li>
           <Link to="/Post">Inicio</Link>

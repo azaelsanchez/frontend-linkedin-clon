@@ -14,6 +14,7 @@ import uploadFileReducers from "./reducers/uploadFileReducers";
 import userUpdate from "./reducers/userEditReducers";
 import province_id from "./reducers/cityIdReducers";
 import offerDetails from "./reducers/offerDetailsReducers";
+import searchCity from "./reducers/searchReducers";
 
 const initialState = {};
 const middleware = { thunk };
@@ -29,7 +30,8 @@ const reducers = combineReducers({
   pUser: perfilUser,
   userUp: userUpdate,
   province: province_id,
-  offer: offerDetails,
+  searching: searchCity,
+  details: offerDetails,
   UI: uiReducer
 });
 

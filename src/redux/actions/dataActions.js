@@ -11,7 +11,8 @@ import {
   CREAR_POST_USER,
   UPDATE_USER,
   SHOW_PROVINCES_NAME,
-  OFFER_DETAILS
+  OFFER_DETAILS,
+  SEARCH_CITY
 } from "../types";
 
 export function showOfferWorks() {
@@ -25,6 +26,7 @@ export function showOfferWorks() {
 }
 
 export function offerDetails(item) {
+  console.log(item);
   store.dispatch({ type: OFFER_DETAILS, payload: item });
 }
 
@@ -39,6 +41,7 @@ export function showCities() {
   axios
     .get("http://localhost:8000/api/provinces")
     .then(res => {
+      // console.log(item);
       store.dispatch({ type: SHOW_CITIES, payload: res.data });
     })
     .catch(error => console.log(error));
@@ -53,14 +56,14 @@ export function showUserPanel() {
 
 export function perfilUser() {
   axios.get("http://localhost:8000/user/verperfil/").then(res => {
-    console.log(res);
+    //console.log(res);
     store.dispatch({ type: VER_PERFIL_USER, payload: res.data });
   });
 }
 
 export function crearPost() {
   axios.get("http://localhost:8000/api/post").then(res => {
-    console.log(res);
+    //console.log(res);
     store.dispatch({ type: CREAR_POST, payload: res.data });
   });
 }
@@ -69,14 +72,14 @@ export function crearPostUser(send) {
   axios
     .post("http://localhost:8000/api/crearpost", send)
     .then(res => {
-      console.log(res);
+      //console.log(res);
       store.dispatch({ type: CREAR_POST_USER, payload: res.data });
     })
     .catch(error => console.log(error));
 }
 
 export function userEdit(userUp) {
-  console.log(userUp);
+  //console.log(userUp);
   axios
     .patch("http://localhost:8000/user/modificarperfil", userUp, {
       headers: {
@@ -84,6 +87,14 @@ export function userEdit(userUp) {
       }
     })
     .then(res => {
+      console.log(res.data);
       store.dispatch({ type: UPDATE_USER, payload: res.data });
     });
+}
+
+export function SearchCity(nombreciudad) {
+  axios.get(`http://localhost:8000/api/ciudad/${nombreciudad}`).then(res => {
+    console.log(res);
+    store.dispatch({ type: SEARCH_CITY, payload: res.data });
+  });
 }
