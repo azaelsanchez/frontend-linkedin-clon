@@ -20,16 +20,16 @@ function Navbar() {
           <Link to="/Post">Inicio</Link>
         </li>
         <li>
-          <a href="#">Mi red</a>
-        </li>
-        <li>
           <Link to="/anuncios">Empleo</Link>
         </li>
         <li>
         <Link to="/paneltrabajos">Panel</Link>
         </li>
         <li>
-          <a href="#">Perfil</a>
+        <Link to="/PerfilUser">Perfil</Link>
+        </li>
+        <li>
+        <Link to="/">Logout</Link>
         </li>
       </ul>
     </nav>
