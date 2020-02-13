@@ -18,13 +18,7 @@ class PanelUser extends Component {
     console.log(user[0]);
     return (
       <div {...this.props.profile.id} className="panel-lateral">
-        {/* <img src={user.image} alt="avatar" /> */}
-
-        <img
-          src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/main_element/public/media/image/2019/09/spider-man-lejos-casa.jpg?itok=BpCgLmBD"
-          alt="avatar"
-        />
-
+        <img src={user[0]?.image} alt="avatar" />
         {this.props.profile.id}
         <div className="perfil">
           <h3>Bienvenido {user[0]?.name}</h3>
