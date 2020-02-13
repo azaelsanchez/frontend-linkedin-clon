@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { SearchCity } from "../redux/actions/dataActions";
+import { Redirect } from 'react-router-dom';
+
 
 class Search extends Component {
   constructor() {
     super();
     this.state = {
-      search: null
+      search: null,
+      redirect:''
     };
   }
   componentDidMount() {}
@@ -23,7 +26,17 @@ class Search extends Component {
   handleSubmitSearch = event => {
     event.preventDefault();
     SearchCity(this.state.search);
+    this.setState({
+      redirect: 'algo'
+  });
+
   };
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to='/anunciosbusqueda' />
+    }
+  }
+
 
   render() {
     return (
@@ -40,8 +53,9 @@ class Search extends Component {
         </form>
         <div className="search-list">
           {this.props.citiesFound.map(item => (
-            <li> {item.city} </li>
+            <p> </p>
           ))}
+          {this.renderRedirect()}
         </div>
       </div>
     );

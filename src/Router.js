@@ -15,6 +15,8 @@ import PerfilUser from "./containers/PerfilUser";
 import offerDetails from "./containers/OfferDetails";
 import verCurriculum from "./containers/CurriculumUser";
 import panelTrabajos from "./containers/PanelTrabajos";
+import anunciosBusqueda from "./containers/AnunciosBusqueda";
+
 
 const Router = () => {
   return (
@@ -32,6 +34,7 @@ const Router = () => {
         <Route exact path="/PerfilUser" component={PerfilUser} />
         <Route exact path="/curriculum" component={verCurriculum} />
         <Route exact path="/paneltrabajos" component={panelTrabajos} />
+        <Route exact path="/anunciosbusqueda" component={anunciosBusqueda} />
       </Switch>
     </BrowserRouter>
   );
