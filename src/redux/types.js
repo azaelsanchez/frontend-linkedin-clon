@@ -4,8 +4,6 @@ export const SET_UNAUTHENTICATED = "SET_UNAUTHENTICATED";
 export const SET_USER = "SET_USER";
 export const LOADING_USER = "LOADING_USER";
 export const UPDATE_USER = "UPDATE_USER";
-export const SHOW_PROVINCES = "SHOW_PROVINCES";
-export const SHOW_PROVINCES_NAME = "SHOW_PROVINCES_NAME";
 
 // UI reducers types
 export const SET_ERRORS = "SET_ERRORS";
@@ -21,7 +19,8 @@ export const USER_MODIFY = "USER_MODIFY";
 export const VER_PERFIL_USER = "VER_PERFIL_USER";
 export const CREAR_POST_USER = "CREAR_POST_USER";
 export const OFFER_DETAILS = "OFFER_DETAILS";
-export const SEARCH_CITY = "SEARCH_CITY"
+export const SEARCH_CITY = "SEARCH_CITY";
 export const VER_CV = "VER_CV";
+export const SHOW_PROVINCES = "SHOW_PROVINCES";
+export const SHOW_PROVINCES_NAME = "SHOW_PROVINCES_NAME";
 // export const CREAR_CV = "CREAR_CV";
-

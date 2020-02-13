@@ -5,7 +5,7 @@ import React, { Component } from "react";
 
 import Navbar from "../components/Navbar";
 // import { modifyUser } from "../redux/actions/dataActions";
-//import "./Noticias.css";
+import "./App.css";
 
 class ModificarPerfilUser extends Component {
   constructor(props) {

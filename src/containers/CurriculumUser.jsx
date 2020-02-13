@@ -8,11 +8,11 @@ import Navbar from "../components/Navbar";
 
 import { verCurriculum } from "../redux/actions/dataActions";
 
-import "./Noticias.css";
+import "./App.css";
 
 class Curriculum extends Component {
   componentDidMount() {
-    verCurriculum() ;
+    verCurriculum();
   }
 
   render() {
@@ -41,7 +41,7 @@ class Curriculum extends Component {
 
 function mapStateToProps(state) {
   return {
-    cv: state.cv.verCurriculum,
+    cv: state.cv.verCurriculum
   };
 }
 

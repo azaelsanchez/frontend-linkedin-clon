@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { LoginForm } from "./LoginForm";
 import AuthApi from "./authRepository";
 
-import "./Login.css";
+import "../App.css";
 
 class LoginPage extends Component {
   constructor(props) {
@@ -60,13 +60,13 @@ class LoginPage extends Component {
     } else {
       return (
         <Fragment>
-          <div className="contenedor">
-            <img
-              className="logo-linkedin"
-              src="/assets/img/logo-linkedin-clon.png"
-              alt="logo"
-            />
-            <div className="bloque-login">
+          <div className="contenedor-principal">
+            <div className="container">
+              <img
+                className="logo-linkedin"
+                src="/assets/img/logo-linkedin-clon.png"
+                alt="logo"
+              />
               <h1 className="title">Iniciar sesión</h1>
               <LoginForm
                 user={this.state.user}

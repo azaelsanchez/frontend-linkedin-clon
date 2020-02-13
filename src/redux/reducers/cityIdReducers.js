@@ -8,7 +8,7 @@ function province_id(state = initialState, action) {
   switch (action.type) {
     case SHOW_PROVINCES_NAME:
       return Object.assign({}, state, { province_id: action.payload });
-
+      
     default:
       return { ...state };
   }

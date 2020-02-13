@@ -10,7 +10,7 @@ import PanelUser from "../components/Panel-user";
 import Navbar from "../components/Navbar";
 import Modal from "../components/Modal";
 
-import "./Noticias.css";
+import "./App.css";
 
 class Post extends Component {
   constructor(props) {
@@ -43,7 +43,6 @@ class Post extends Component {
 
   image_pathRef = React.createRef();
   descriptionRef = React.createRef();
-
 
   fileChange = event => {
     this.setState({
@@ -112,7 +111,6 @@ class Post extends Component {
   };
 
   render() {
-   
     return (
       <Fragment>
         <Navbar />

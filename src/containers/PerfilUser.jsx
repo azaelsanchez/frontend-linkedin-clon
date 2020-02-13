@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 
 import Navbar from "../components/Navbar";
-import "./Noticias.css";
+import "./App.css";
 import {
   showUserPanel,
   showCities,
@@ -34,7 +34,6 @@ class PerfilUser extends Component {
   }
   componentDidMount() {
     showUserPanel();
-    showCities();
   }
 
   openModal = () => {
@@ -53,7 +52,7 @@ class PerfilUser extends Component {
   emailRef = React.createRef();
   addressRef = React.createRef();
   countryRef = React.createRef();
-  provinceRef = React.createRef();
+  //provinceRef = React.createRef();
   zipCodeRef = React.createRef();
 
   fileChange = event => {
@@ -66,11 +65,7 @@ class PerfilUser extends Component {
   onChange = event => {
     event.preventDefault();
     const user = this.props.profile;
-    // let provinces = this.props.cities;
 
-    // console.log("mierda " + province);
-    // provinces[event.target.name] = event.target.value;
-    // console.log(provinces);
     this.setState({
       userM: {
         id: user[0]?.id,
@@ -92,7 +87,7 @@ class PerfilUser extends Component {
   fileUpload = () => {
     const fd = new FormData();
     fd.append("image", this.state.selectedFile, this.state.selectedFile?.name);
-    console.log(fd);
+
     return axios.post("http://localhost:8000/api/storage/", fd, {
       onUploadProgress: progressEvent => {
         console.log(
@@ -110,31 +105,36 @@ class PerfilUser extends Component {
     const user = this.props.profile;
 
     try {
-      axios
-        .patch("http://localhost:8000/api/uploadImage", {
-          userM: {
-            id: user[0]?.id,
-            name: this.nameRef.current.value,
-            image: image,
-            surname: this.surnameRef.current.value,
-            password: this.passwordRef.current.value,
-            phone: this.phoneRef.current.value,
-            email: this.emailRef.current.value,
-            address: this.addressRef.current.value,
-            country: this.countryRef.current.value,
-            province_id: this.provinceRef.current.value,
-            zip_code: this.zipCodeRef.current.value
-          }
-        })
-        .then(res => {
-          this.setState({
-            userM: res.data?.user
-          });
+      axios.patch("http://localhost:8000/api/uploadImage", image).then(res => {
+        this.setState({
+          userM: res.data?.user
         });
+      });
     } catch (error) {
       console.error(error);
     }
   };
+
+  handlerProvince = name => {
+    showCities(name);
+  };
+
+  renderOptionsCity() {
+    return this.props.cities?.map((item, index) => {
+      console.log(item);
+      return (
+        <Fragment key={index}>
+          <option
+            defaultValue={item.id}
+            onClick={() => this.handlerProvince(item.id)}
+          >
+            {this.props.cities?.name}
+          </option>
+        </Fragment>
+      );
+    });
+  }
+
   saveUser = event => {
     event.preventDefault();
 
@@ -263,9 +263,7 @@ class PerfilUser extends Component {
               name="province"
               //value="province"
             >
-              <option ref={this.provinceRef} value={this.props.cities}>
-                {this.props.cities?.name}
-              </option>
+              {this.renderOptionsCity()}
             </select>
             <input
               ref={this.zipCodeRef}

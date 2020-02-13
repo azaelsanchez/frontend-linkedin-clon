@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 
 import Navbar from "../components/NavbarHome";
 import "./App.css";
+import { Link } from "react-router-dom";
 
 const App = () => {
   return (
@@ -16,8 +17,9 @@ const App = () => {
           </h3>
 
           <div className="container-form">
-            <input className="searching-home" placeholder="Buscar Héroes" />
-            <input className="searching-city" placeholder="Buscar por ciudad" />
+            <Link className="link" to="/user/register">
+              Soy un Héroe
+            </Link>
           </div>
         </div>
         <div className="container-flex2">
@@ -44,14 +46,9 @@ const App = () => {
           </h3>
 
           <div className="container-form">
-            <input
-              className="searching-home"
-              placeholder="Alertas de ciudadanos"
-            />
-            <input
-              className="searching-city"
-              placeholder="Alertas por ciudad"
-            />
+            <Link className="link" to="/company/register">
+              Soy un Ciudadano
+            </Link>
           </div>
         </div>
       </div>

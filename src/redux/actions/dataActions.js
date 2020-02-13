@@ -13,9 +13,8 @@ import {
   SHOW_PROVINCES_NAME,
   OFFER_DETAILS,
   SEARCH_CITY,
-  VER_CV,
+  VER_CV
   // CREAR_CV
-
 } from "../types";
 
 export function showOfferWorks() {
@@ -36,7 +35,7 @@ export function offerDetails(item) {
 export function showCitiesId(name) {
   axios.get(`http://localhost:8000/api/provinces/?${name}`).then(res => {
     console.log("algo mi niño" + res);
-    store.dispatch({ type: SHOW_PROVINCES_NAME, payload: res.data });
+    store.dispatch({ type: SHOW_PROVINCES_NAME, payload: res.data.obj });
   });
 }
 
@@ -45,7 +44,7 @@ export function showCities() {
     .get("http://localhost:8000/api/provinces")
     .then(res => {
       // console.log(item);
-      store.dispatch({ type: SHOW_CITIES, payload: res.data });
+      store.dispatch({ type: SHOW_CITIES, payload: res.data.obj });
     })
     .catch(error => console.log(error));
 }

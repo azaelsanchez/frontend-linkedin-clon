@@ -39,9 +39,9 @@ export const RegisterCompanyForm = ({
       onChange={onChange}
     />
 
-    <div className="btn-register-company-user">
-      <input type="submit" value="Register" id="btn-register" />
-      <input type="submit" value="I'm Company" id="btn-register-company" />
+    <div className="btn-log-in">
+      <input type="submit" value="Register" id="btn-login" />
+      {/* <input type="submit" value="I'm Company" id="btn-company" /> */}
     </div>
   </form>
 );

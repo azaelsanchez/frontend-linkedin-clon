@@ -23,7 +23,7 @@ export const LoginForm = ({
     />
     <div className="btn-log-in">
       <input type="submit" value="Logged in" id="btn-login" />
-      <input type="submit" value="I'm Company" id="btn-company" />
+      {/* <input type="submit" value="I'm Company" id="btn-company" /> */}
     </div>
   </form>
 );

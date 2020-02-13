@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { offerDetails } from "../redux/actions/dataActions";
-
+import "./App.css";
 class OfferDetails extends Component {
   componentDidMount() {
     // offerDetails();

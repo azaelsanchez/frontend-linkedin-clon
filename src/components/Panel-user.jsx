@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import { showUserPanel } from "../redux/actions/dataActions";
 
-import "./css/Panel-user.css";
+import "../containers/App.css";
 
 class PanelUser extends Component {
   componentDidMount() {
@@ -18,7 +18,7 @@ class PanelUser extends Component {
     console.log(user[0]);
     return (
       <div {...this.props.profile.id} className="panel-lateral">
-        <img src={user.image} alt="avatar" /> 
+        <img src={user.image} alt="avatar" />
         {this.props.profile.id}
         <h3>Bienvenido {user[0]?.name}</h3>
         <p>Perfil:</p>

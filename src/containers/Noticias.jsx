@@ -8,17 +8,15 @@ import Navbar from "../components/Navbar";
 
 import { showOfferWorks, offerDetails } from "../redux/actions/dataActions";
 
-import "./Noticias.css";
+import "./App.css";
 
 class Noticias extends Component {
   componentDidMount() {
     showOfferWorks();
   }
 
-  getNoticiasBySearch = search => {};
-
   goToOfferDetails = item => {
-    this.props.history.push(`/oferta/${item.id}/${item.name}`);
+    this.props.history.push(`/oferta/${item?.id}`);
     offerDetails(item);
   };
 

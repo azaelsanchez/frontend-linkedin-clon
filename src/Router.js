@@ -25,7 +25,7 @@ const Router = () => {
         <Route exact path="/company/login" component={LoginCompanyPage} />
         <Route exact path="/company/register" component={RegisterCompanyPage} />
         <Route exact path="/anuncios" component={Noticias} />
-        <Route exact path="/oferta/:id/:name" component={offerDetails} />
+        <Route exact path="/oferta/:id" component={offerDetails} />
         <Route exact path="/post" component={Post} />
         <Route exact path="/modificaruser" component={ModificarPerfilUser} />
         <Route exact path="/PerfilUser" component={PerfilUser} />
