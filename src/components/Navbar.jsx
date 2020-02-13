@@ -26,7 +26,7 @@ function Navbar() {
           <Link to="/anuncios">Empleo</Link>
         </li>
         <li>
-          <a href="#">Mensajes</a>
+        <Link to="/paneltrabajos">Panel</Link>
         </li>
         <li>
           <a href="#">Perfil</a>
