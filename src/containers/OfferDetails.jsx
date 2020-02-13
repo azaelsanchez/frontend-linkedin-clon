@@ -18,7 +18,7 @@ class OfferDetails extends Component {
       offer_id: num,
       user_id: user[0].id
     }
-    console.log(idOffer)
+ 
     Axios.post(`http://localhost:8000/user/solicitaroferta`, idOffer).then(res => {
       console.log("algo mi niño" + res);})
     .catch(err => console.error(err))
@@ -27,7 +27,7 @@ class OfferDetails extends Component {
 
 
   renderOfferWorks = item => {
-    console.log(item, "algpo");
+    console.log(item, "llegamos");
     return (
       <div className="noticias-post">
       <Navbar />
