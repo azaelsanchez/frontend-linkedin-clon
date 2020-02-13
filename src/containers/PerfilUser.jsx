@@ -180,21 +180,12 @@ class PerfilUser extends Component {
                     alt={user?.description}
                     className="avatar"
                   /> */}
-              <img src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/main_element/public/media/image/2019/09/spider-man-lejos-casa.jpg?itok=BpCgLmBD" alt=""/>
+              <img src={user[0]?.image} alt=""/>
               <p>Email: {user[0]?.email} </p>
               <p>Direccion: {user[0]?.address} </p>
               <p>Telefono: {user[0]?.phone} </p>
             </div>
-                      <form onSubmit={this.handleSubmit} className="group-upload-image">
-                        <input
-                          ref={this.imageRef}
-                          id="imageInput"
-                          type="file"
-                          name="image"
-                          onChange={this.fileChange}
-                          />
-                        <button name="image">Subir</button>
-                      </form>
+
           </div>
         </div>
         <Modal show={this.state.modal} close={this.closeModal}>
@@ -282,6 +273,14 @@ class PerfilUser extends Component {
               className="guardar-modal"
               onChange={this.onChange}
             />
+            <input
+                          ref={this.imageRef}
+                          id="imageInput"
+                          type="file"
+                          name="image"
+                          onChange={this.fileChange}
+                          />
+                        <button onSubmit={this.handleSubmit} className="group-upload-image" name="image">Subir</button>
             <button className="btn-cancel" onClick={this.closeModal}>
               CERRAR
             </button>
