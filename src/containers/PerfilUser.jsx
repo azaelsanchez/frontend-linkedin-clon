@@ -175,25 +175,26 @@ class PerfilUser extends Component {
               <h1>
                 {user[0]?.name} {user[0]?.surname}
               </h1>
-              <img
-                src={`http://localhost:8000/storage/${user?.image}`}
-                alt={user?.description}
-                className="avatar"
-              />
-              <form onSubmit={this.handleSubmit} className="group-upload-image">
-                <input
-                  ref={this.imageRef}
-                  id="imageInput"
-                  type="file"
-                  name="image"
-                  onChange={this.fileChange}
-                />
-                <button name="image">Subir</button>
-              </form>
+                  {/* <img
+                    src={`http://localhost:8000/storage/${user?.image}`}
+                    alt={user?.description}
+                    className="avatar"
+                  /> */}
+              <img src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/main_element/public/media/image/2019/09/spider-man-lejos-casa.jpg?itok=BpCgLmBD" alt=""/>
               <p>Email: {user[0]?.email} </p>
               <p>Direccion: {user[0]?.address} </p>
               <p>Telefono: {user[0]?.phone} </p>
             </div>
+                      <form onSubmit={this.handleSubmit} className="group-upload-image">
+                        <input
+                          ref={this.imageRef}
+                          id="imageInput"
+                          type="file"
+                          name="image"
+                          onChange={this.fileChange}
+                          />
+                        <button name="image">Subir</button>
+                      </form>
           </div>
         </div>
         <Modal show={this.state.modal} close={this.closeModal}>

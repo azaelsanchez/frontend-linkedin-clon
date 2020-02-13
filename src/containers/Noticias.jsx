@@ -41,7 +41,7 @@ class Noticias extends Component {
                     <p>Tipo de jornada: {item.working_day} </p>
                     <p>Sector: {item.sector} </p>
                     <p>Habilidades requeridas: {item.required_skills} </p>
-                    <button onClick={this.goToOfferDetails.bind(this, item)}>
+                    <button className="btn-agregar-noticia" onClick={this.goToOfferDetails.bind(this, item)}>
                       Más información
                     </button>
                   </div>

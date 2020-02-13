@@ -1,15 +1,17 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { SearchCity } from "../redux/actions/dataActions";
 import { Link } from "react-router-dom";
 
 import { showOfferWorks } from "../redux/actions/dataActions";
+import { Redirect } from "react-router-dom";
 
 class Search extends Component {
   constructor() {
     super();
     this.state = {
-      search: null
+      search: null,
+      redirect: ""
     };
   }
   componentDidMount() {
@@ -27,10 +29,15 @@ class Search extends Component {
   handleSubmitSearch = (event, item) => {
     event.preventDefault();
 
-    //this.props.history.push(`/oferta/${item.id}/${item.name}`);
-
-    console.log(item);
     SearchCity(this.state.search);
+    this.setState({
+      redirect: "algo"
+    });
+  };
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to="/anunciosbusqueda" />;
+    }
   };
 
   render() {
@@ -47,20 +54,14 @@ class Search extends Component {
             type="text"
             placeholder="Buscar..."
           />
-          <button onClick={this.handleSubmitSearch}></button>
+          {/* <button onClick={this.handleSubmitSearch}></button> */}
         </form>
 
         <div className="search-list">
           {this.props.citiesFound.map(item => (
-            <div className="busqueda-realizada" key={item?.id}>
-              <li> Búsqueda por: {item?.city} </li>
-              <li> {item?.name} </li>
-              <li> {item?.title_offer} </li>
-              <li> {item?.description} </li>
-              <button onClick={`/oferta/${item?.id}`}>Ir</button>
-              <Link to={`/oferta/${item?.id}`}>ver oferta</Link>
-            </div>
+            <Fragment></Fragment>
           ))}
+          {this.renderRedirect()}
         </div>
       </div>
     );

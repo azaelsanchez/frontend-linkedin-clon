@@ -160,8 +160,7 @@ class Post extends Component {
                     src={`http://localhost:8000/storage/${item?.image_path}`}
                     alt={item.description}
                   />
-                  <h4>Descripción: {item.description} </h4>
-                  <button>Comentar</button>
+                  <h4> {item.description} </h4>
                 </div>
               ))}
           </div>
