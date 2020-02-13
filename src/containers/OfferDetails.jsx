@@ -15,10 +15,11 @@ class OfferDetails extends Component {
   aceptarOffer(num){
     const user = this.props.profile;
     const idOffer = {
-      id_offer_works: num,
-      id_user: user[0].id
+      offer_id: num,
+      user_id: user[0].id
     }
-    Axios.post(`http://localhost:8000/user/solicitaroferta`).then(res => {
+    console.log(idOffer)
+    Axios.post(`http://localhost:8000/user/solicitaroferta`, idOffer).then(res => {
       console.log("algo mi niño" + res);})
     .catch(err => console.error(err))
 
