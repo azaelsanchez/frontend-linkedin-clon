@@ -14,6 +14,7 @@ import ModificarPerfilUser from "./containers/ModificarPerfilUser";
 import PerfilUser from "./containers/PerfilUser";
 import offerDetails from "./containers/OfferDetails";
 import verCurriculum from "./containers/CurriculumUser";
+import panelTrabajos from "./containers/PanelTrabajos";
 
 const Router = () => {
   return (
@@ -30,6 +31,7 @@ const Router = () => {
         <Route exact path="/modificaruser" component={ModificarPerfilUser} />
         <Route exact path="/PerfilUser" component={PerfilUser} />
         <Route exact path="/curriculum" component={verCurriculum} />
+        <Route exact path="/paneltrabajos" component={panelTrabajos} />
       </Switch>
     </BrowserRouter>
   );
