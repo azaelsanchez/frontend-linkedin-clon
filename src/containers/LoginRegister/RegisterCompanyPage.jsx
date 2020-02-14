@@ -30,7 +30,7 @@ class RegisterCompanyPage extends Component {
     const company = Object.assign({}, this.state.company);
     AuthApi.register(company)
       .then(res => {
-        alert("Usuario creado");
+    
       })
       .catch(error => {
         console.log(error);

@@ -1,23 +1,20 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { SearchCity } from "../redux/actions/dataActions";
-import { Link } from "react-router-dom";
+import { Redirect } from 'react-router-dom';
 
-import { showOfferWorks } from "../redux/actions/dataActions";
-import { Redirect } from "react-router-dom";
 
 class Search extends Component {
   constructor() {
     super();
     this.state = {
       search: null,
-      redirect: ""
+      redirect:''
     };
   }
-  componentDidMount() {
-    showOfferWorks();
-  }
+  componentDidMount() {}
 
+  searchRef = React.createRef();
   handleSearchChange = event => {
     event.preventDefault();
     const query = event.target.value;
@@ -26,26 +23,25 @@ class Search extends Component {
     });
   };
 
-  handleSubmitSearch = (event, item) => {
+  handleSubmitSearch = event => {
     event.preventDefault();
-
     SearchCity(this.state.search);
     this.setState({
-      redirect: "algo"
-    });
+      redirect: 'algo'
+  });
+
   };
   renderRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to="/anunciosbusqueda" />;
+      return <Redirect to='/anunciosbusqueda' />
     }
-  };
+  }
+
 
   render() {
-    const offer = this.props.offer;
-    // console.log(this.props.detail);
     return (
       <div className="container-search">
-        <form className="container-search">
+        <form onSubmit={this.handleSubmitSearch} className="container-search">
           <input
             value={this.state.search}
             ref={this.searchRef}
@@ -54,12 +50,10 @@ class Search extends Component {
             type="text"
             placeholder="Buscar..."
           />
-          {/* <button onClick={this.handleSubmitSearch}></button> */}
         </form>
-
         <div className="search-list">
           {this.props.citiesFound.map(item => (
-            <Fragment></Fragment>
+            <p> </p>
           ))}
           {this.renderRedirect()}
         </div>
@@ -70,8 +64,7 @@ class Search extends Component {
 
 function mapStateToProps(state) {
   return {
-    citiesFound: state.searching.citiesFound,
-    offer: state.data.offer
+    citiesFound: state.searching.citiesFound
   };
 }
 

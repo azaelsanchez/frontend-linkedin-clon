@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const RegisterCompanyForm = ({
   onChange,
@@ -40,7 +41,7 @@ export const RegisterCompanyForm = ({
     />
 
     <div className="btn-log-in">
-      <input type="submit" value="Register" id="btn-login" />
+    <input type="submit" value="Register" id="btn-login" />
       {/* <input type="submit" value="I'm Company" id="btn-company" /> */}
     </div>
   </form>

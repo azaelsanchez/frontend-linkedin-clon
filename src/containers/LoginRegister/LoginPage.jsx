@@ -48,12 +48,16 @@ class LoginPage extends Component {
       console.log(userStore.email);
       return (
         <Fragment>
+          <div className="movimiento">
           <div className="redirect-profile">
+           
             <h1> Bienvenido {userStore.email} </h1>
-
-            <Link className="link" to={`/user/${userStore.email}`}>
+            <br/><br/>
+            <Link className="link" to={"/post"}>
               Ya puedes visitar tu perfil
             </Link>
+            
+            </div>
           </div>
         </Fragment>
       );
