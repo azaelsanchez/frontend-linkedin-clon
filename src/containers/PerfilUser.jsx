@@ -175,20 +175,23 @@ class PerfilUser extends Component {
               <h1>
                 {user[0]?.name} {user[0]?.surname}
               </h1>
-                  {/* <img
+              {/* <img
                     src={`http://localhost:8000/storage/${user?.image}`}
                     alt={user?.description}
                     className="avatar"
                   /> */}
-              <img src={user[0]?.image} alt=""/>
+              <img src={user[0]?.image} alt="" />
               <p>Email: {user[0]?.email} </p>
               <p>Direccion: {user[0]?.address} </p>
               <p>Telefono: {user[0]?.phone} </p>
             </div>
-
           </div>
         </div>
-        <Modal show={this.state.modal} close={this.closeModal}>
+        <Modal
+          className="modal"
+          show={this.state.modal}
+          close={this.closeModal}
+        >
           <form className="form-modal" onSubmit={this.saveUser}>
             <input
               ref={this.nameRef}
@@ -248,7 +251,7 @@ class PerfilUser extends Component {
               name="country"
             />
 
-            <select
+            {/* <select
               onChange={this.onChange}
               className="form-control"
               id="exampleFormControlSelect2"
@@ -256,7 +259,7 @@ class PerfilUser extends Component {
               //value="province"
             >
               {this.renderOptionsCity()}
-            </select>
+            </select> */}
             <input
               ref={this.zipCodeRef}
               type="number"
@@ -265,22 +268,34 @@ class PerfilUser extends Component {
               className="zip_code"
               name="zip_code"
             />
-            <input
+            {/* <input
               type="submit"
               value="PUBLICAR"
               className="guardar-modal"
               onChange={this.onChange}
-            />
-            <input
-                          ref={this.imageRef}
-                          id="imageInput"
-                          type="file"
-                          name="image"
-                          onChange={this.fileChange}
-                          />
-                        <button onSubmit={this.handleSubmit} className="group-upload-image" name="image">Subir</button>
-            <button className="btn-cancel" onClick={this.closeModal}>
-              CERRAR
+            /> */}
+            <div className="subir-imagen2">
+              <label>
+                Sube tu avatar
+                <input
+                  className="image"
+                  ref={this.imageRef}
+                  id="imageInput"
+                  type="file"
+                  name="image"
+                  onChange={this.fileChange}
+                />
+              </label>
+            </div>
+            <button className="open-modal-btn" onClick={this.closeModal}>
+              Cerrar
+            </button>
+            <button
+              onSubmit={this.handleSubmit}
+              className="open-modal-btn"
+              name="image"
+            >
+              Subir
             </button>
           </form>
         </Modal>

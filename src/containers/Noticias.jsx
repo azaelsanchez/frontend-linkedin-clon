@@ -31,17 +31,19 @@ class Noticias extends Component {
             {this.props.offer
               ?.sort((a, b) => a - b)
               .map(item => {
-                console.log(item);
                 return (
                   <div key={item.id} className="items-anuncio">
                     <h1>{item.title_offer}</h1>
-                    <p>{item.company_name} </p>
+                    <p>{item.company} </p>
                     <h4>Descripción: {item.description} </h4>
                     <p>Nivel de experiencia: {item.experience_level} </p>
                     <p>Tipo de jornada: {item.working_day} </p>
                     <p>Sector: {item.sector} </p>
                     <p>Habilidades requeridas: {item.required_skills} </p>
-                    <button className="btn-agregar-noticia" onClick={this.goToOfferDetails.bind(this, item)}>
+                    <button
+                      className="open-modal-btn"
+                      onClick={this.goToOfferDetails.bind(this, item)}
+                    >
                       Más información
                     </button>
                   </div>

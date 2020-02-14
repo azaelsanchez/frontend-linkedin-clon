@@ -25,7 +25,7 @@ class AnunciosBusqueda extends Component {
                 Habilidades requeridas: Inmovilizar,super fuerza y resistencia a
                 las balas o similar.
               </p>
-              <button>Más información</button>
+              <button className="open-modal-btn-post2">Más información</button>
             </div>
           </div>
         </div>
