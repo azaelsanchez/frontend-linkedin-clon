@@ -118,8 +118,9 @@ class Post extends Component {
           <PanelUser />
           <div className="modal-post">
             <button className="open-modal-btn" onClick={this.openModal}>
-              Escribe una noticia
+              =
             </button>
+            <p>Escribe una noticia</p>
             <Modal
               className="modal"
               show={this.state.modal}
@@ -134,19 +135,27 @@ class Post extends Component {
                   className="modal-text"
                 ></textarea>
 
-                <input
-                  ref={this.image_pathRef}
-                  id="imageInput"
-                  type="file"
-                  name="image"
-                  onChange={this.fileChange}
-                />
-
-                <button className="btn-cancel" onClick={this.closeModal}>
-                  CERRAR
-                </button>
-
-                <button name="image">PUBLICAR</button>
+                <div className="buttons-form-post">
+                  <label className="subir-imagen">
+                    Sube tu mejor foto
+                    <input
+                      ref={this.image_pathRef}
+                      id="imageInput"
+                      type="file"
+                      name="image"
+                      onChange={this.fileChange}
+                    />
+                  </label>
+                  <button
+                    className="open-modal-btn-post"
+                    onClick={this.closeModal}
+                  >
+                    CERRAR
+                  </button>
+                  <button className="open-modal-btn-post" name="image">
+                    PUBLICAR
+                  </button>
+                </div>
               </form>
             </Modal>
           </div>

@@ -154,29 +154,6 @@ input[type="submit"] {
   border-radius: 5px;
 }
 
-.panel-lateral {
-  border: 2px solid #1b1b1b;
-  width: 15%;
-  margin-left: 10%;
-  height: 100%;
-
-  position: absolute;
-  top: 15%;
-  border-radius: 120px;
-  left: 0;
-  z-index: -1;
-}
-.panel-lateral img {
-  width: 90%;
-  border-radius: 120px 120px 0px 0px;
-  margin-left: 5%;
-  margin-top: 5%;
-}
-
-.panel-lateral h3 {
-  padding: 10px;
-}
-
 .form-group {
   display: flex;
   background: rgb(49, 119, 218);
@@ -203,6 +180,13 @@ input[type="submit"] {
   /* box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.75); */
   border: 2px solid #1b1b1b;
   margin: 20px;
+  border-radius: 5px;
+  padding: 10px;
+}
+.items-anuncio2 {
+  width: 50%;
+  border: 2px solid #1b1b1b;
+  margin: 20px auto;
   border-radius: 5px;
   padding: 10px;
 }
@@ -262,6 +246,7 @@ input[type="submit"] {
 }
 
 input[type="text"],
+input[type="number"],
 input[type="password"] {
   width: 90%;
   border: none;
@@ -325,7 +310,7 @@ input[type="submit"] {
 
 .form {
   padding: 10px;
-  width: 80%;
+  width: 75%;
   margin: auto;
 }
 
@@ -333,21 +318,77 @@ input[type="submit"] {
   display: flex;
   justify-content: space-between;
 }
-#btn-login {
+
+.open-modal-btn {
+  font-size: 16px;
+  margin: 10px;
+  background: #388fe6;
+  border: none;
+  padding: 10px;
+  border-radius: 50px;
+  cursor: pointer;
+  color: white;
+  box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.75);
+  transition: all 2s ease-out;
+}
+.open-modal-btn:hover {
   background: green;
-  color: white;
   transition: 0.5s;
 }
 
-#btn-company {
-  background: #2d8cec;
-  transition: 0.5s;
+.open-modal-btn-post2 {
+  font-size: 15px;
+  font-weight: 200;
+  background: #edb21c;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  padding: 10px;
   color: white;
+  box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.75);
+  transition: all 2s ease-out;
+  margin-left: 82%;
+}
+.open-modal-btn-post2:hover {
+  background: green;
+  transition: 0.5s;
 }
 
-#btn-login:hover,
-#btn-company:hover {
-  background: #1b1b1b;
+.open-modal-btn-post {
+  font-size: 15px;
+  font-weight: 200;
+  background: #edb21c;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  padding: 10px;
+  color: white;
+  box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.75);
+  transition: all 2s ease-out;
+}
+.open-modal-btn-post:hover {
+  background: green;
+  transition: 0.5s;
+}
+
+.container-button-empleo {
+  display: flex;
+}
+
+.buttons-form-post {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-post {
+  display: flex;
+  align-items: center;
+}
+
+.modal-post p {
+  font-size: 18px;
+  transition: 1s;
+  padding-left: 10px;
 }
 
 /*  Responsive here */

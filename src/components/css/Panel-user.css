@@ -11,18 +11,49 @@
 }
 .panel-lateral img {
   width: 98%;
-  border-radius: 120px 120px 0px 0px;
+  border-radius: 120px 120px 5px 5px;
   margin-left: 0;
   margin-top: 0;
-  border: 2px solid white;
+  border: 2px solid black;
 }
 
 .panel-lateral h3 {
-  padding: 10px;
+  font-size: 20px;
 }
 
 .panel-lateral {
   padding: 10px;
-  background: #1b1b1b;
-  color: white;
+  background: #ffc400;
+  border: 2px solid black;
+  color: black;
+}
+
+.perfil {
+  background: white;
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid black;
+}
+
+.perfil p {
+  text-align: center;
+}
+.perfil h3 {
+  text-align: center;
+}
+
+.anuncio-img {
+  border-radius: 5px !important;
+}
+
+.footer {
+  padding: 25px;
+  background: white;
+  border-radius: 5px 5px 120px 120px;
+  font-size: 12px;
+  font-weight: 100;
+  text-align: center;
+  margin: 85% 5px 5px 5px;
+  border: 2px solid black;
+  /* width: 73%; */
 }

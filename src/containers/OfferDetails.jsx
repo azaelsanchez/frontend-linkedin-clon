@@ -31,10 +31,10 @@ class OfferDetails extends Component {
     return (
       <div className="noticias-post">
         <Navbar />
-        <div {...this.props.detail} className="container-details">
-          <div key={item?.id} className="offer-container">
+        <div {...this.props.detail} className="container-anuncios">
+          <div key={item?.id} className="items-anuncio2">
             <h1>{item?.title_offer}</h1>
-            <p> Fecha: {item?.created_at}</p>
+
             <p> {item?.company_name} </p>
             <h4> Descripción del puesto </h4>
             <p> {item?.description} </p>
@@ -44,7 +44,12 @@ class OfferDetails extends Component {
             <p> {item?.working_day} </p>
             <h4> Habilidades requeridas </h4>
             <p> {item?.required_skills} </p>
-            <button onClick={ev => this.aceptarOffer(item.id)}>Aceptar</button>
+            <button
+              className="open-modal-btn"
+              onClick={ev => this.aceptarOffer(item.id)}
+            >
+              Aceptar
+            </button>
           </div>
         </div>
       </div>
